@@ -1,8 +1,7 @@
 {
-  "serviceName": "Apply for Bereavement Support Payment",
+  "serviceName": "Book a room",
   "skipLink": "Skip to main content",
-  "cookieMessage": "GOV.UK uses cookies to make the site simpler. {{-link-start}}Find out more about cookies{{-link-end}}",
-  "logoLinkTitle": "Go to the GOV.UK homepage",
+  "cookieMessage": "We use cookies to make the site simpler. {{-link-start}}Find out more about cookies{{-link-end}}",
   "phaseDescription": "This is a new service – your {{-link-start}}feedback{{-link-end}} will help us to improve it.",
   "errorSummaryHeading": "There’s been a problem",
   "errorSummaryDetail": "Check the following:",

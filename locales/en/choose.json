@@ -1,0 +1,16 @@
+{
+  "heading": "Choose an option",
+  "form": {
+    "type": {
+      "labelFind": "I want you to find a room for me",
+      "labelKnow": "I know which room I want to book",
+      "errors": {
+        "presence": "Choose an option"
+      }
+    },
+    "roomList": {
+      "label": "Choose a room"
+    },
+    "submit": "Continue"
+  }
+}

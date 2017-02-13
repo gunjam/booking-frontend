@@ -1,0 +1,38 @@
+<i18n-var/>
+<var errors=(data.errors || false) values=(data.values || false)/>
+
+<layout-use("../../common/layout.marko")>
+
+  <layout-put into="page-title">
+    <i18n-message key="choose:heading"/> - <i18n-message key="app:serviceName"/>
+  </layout-put>
+
+  <layout-put into="content">
+
+    <h1 class="heading-xlarge">
+      <i18n-message key="choose:heading"/>
+    </h1>
+
+    <form method="post" action="/choose-an-option">
+      <gov-radios legend=i18n('choose:heading') name="type" layout="stacked" hide-legend=true>
+        <gov-radios:radio label=i18n('choose:form.type.labelFind') value="find"/>
+        <gov-radios:radio label=i18n('choose:form.type.labelKnow') value="know" reveal="rooms"/>
+      </gov-radios>
+
+      <div class="form-group panel panel-border-narrow js-hidden" id="rooms">
+        <label class="visually-hidden">
+          <i18n-message key="choose:form.roomList.label"/>
+        </label>
+        <select class="form-control" id="room-list">
+          <option>Fish tank</option>
+        </select>
+      </div>
+
+      <button type="submit" class="button">
+        <i18n-message key="choose:form.submit"/>
+      </button>
+    </form>
+
+  </layout-put>
+
+</layout-use>

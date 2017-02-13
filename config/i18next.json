@@ -15,7 +15,8 @@
     "loadPath": "./locales/{{lng}}/{{ns}}.json"
   },
   "ns": [
-    "app"
+    "app",
+    "choose"
   ],
   "whitelist": [
     "en",

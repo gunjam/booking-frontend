@@ -4,7 +4,6 @@ require('marko/node-require').install();
 
 const bodyParser = require('body-parser');
 const compression = require('compression');
-const csrf = require('csurf');
 const express = require('express');
 const helmet = require('helmet');
 const i18next = require('i18next');
@@ -50,7 +49,6 @@ app.use(session(sessionConfig));
 // Load Middleware
 app.use(i18nextMiddleware.handle(i18next));
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(csrf());
 app.use(helmet(require('./config/helmet')));
 
 // Set Content-Type header to text to make compression work for output stream
@@ -58,6 +56,12 @@ app.use((req, res, next) => {
   res.setHeader('Content-Type', 'text/html; charset=utf-8');
   next();
 });
+
+// Page routes
+app.use('/choose-an-option', require('./src/pages/choose'));
+
+// Redirect root to start page
+app.get('/', (req, res) => res.redirect('/choose-an-option'));
 
 // Listen!
 app.listen(port, err => {
