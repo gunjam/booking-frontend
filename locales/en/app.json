@@ -1,0 +1,29 @@
+{
+  "serviceName": "Apply for Bereavement Support Payment",
+  "skipLink": "Skip to main content",
+  "cookieMessage": "GOV.UK uses cookies to make the site simpler. {{-link-start}}Find out more about cookies{{-link-end}}",
+  "logoLinkTitle": "Go to the GOV.UK homepage",
+  "phaseDescription": "This is a new service – your {{-link-start}}feedback{{-link-end}} will help us to improve it.",
+  "errorSummaryHeading": "There’s been a problem",
+  "errorSummaryDetail": "Check the following:",
+  "error": {
+    "404": {
+      "heading": "Page not found",
+      "body": "If you entered a web address please check it was correct."
+    },
+    "500": {
+      "heading": "The service is currently unavailable",
+      "lead": "The service is temporarily unavailable, please try again later."
+    }
+  },
+  "footer": {
+    "supportLinks": "Support links",
+    "cookies": "Cookies",
+    "privacy": "Privacy",
+    "feedback": "Feedback",
+    "madeInNewcastle": "Made in Newcastle by the {{-link-start}}Department for Work and Pensions{{-link-end}}",
+    "ogl": "Open Government Licence",
+    "availableUnderOgl": "All content is available under the {{-link-start}}Open Government Licence v3.0{{-link-end}}, except where otherwise stated",
+    "copyright": "Crown copyright"
+  }
+}

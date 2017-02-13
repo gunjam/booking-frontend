@@ -1,0 +1,10 @@
+{
+  "secret": "oh my glob",
+  "name": "lolly",
+  "cookie": {
+    "maxAge": 1200000
+  },
+  "resave": true,
+  "rolling": true,
+  "saveUninitialized": true
+}
