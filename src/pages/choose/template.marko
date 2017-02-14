@@ -14,12 +14,7 @@
     </h1>
 
     <form method="post" action="/choose-an-option">
-      <gov-radios legend=i18n('choose:heading') name="type" layout="stacked" hide-legend=true>
-        <gov-radios:radio label=i18n('choose:form.type.labelFind') value="find"/>
-        <gov-radios:radio label=i18n('choose:form.type.labelKnow') value="know" reveal="rooms"/>
-      </gov-radios>
-
-      <div class="form-group panel panel-border-narrow js-hidden" id="rooms">
+      <div class="form-group" id="rooms">
         <label class="visually-hidden">
           <i18n-message key="choose:form.roomList.label"/>
         </label>
