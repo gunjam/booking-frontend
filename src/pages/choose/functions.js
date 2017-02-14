@@ -1,9 +1,11 @@
 'use strict';
 
+const {getRooms} = require('../../lib/booking-api');
 const template = require('./template.marko');
 
 function get(req, res) {
-  template.render({}, res);
+  const roomList = getRooms();
+  template.render({roomList}, res);
 }
 
 function post(req, res) {

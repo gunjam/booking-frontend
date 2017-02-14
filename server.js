@@ -58,10 +58,10 @@ app.use((req, res, next) => {
 });
 
 // Page routes
-app.use('/choose-an-option', require('./src/pages/choose'));
+app.use('/choose-a-room', require('./src/pages/choose'));
 
 // Redirect root to start page
-app.get('/', (req, res) => res.redirect('/choose-an-option'));
+app.get('/', (req, res) => res.redirect('/choose-a-room'));
 
 // Listen!
 app.listen(port, err => {

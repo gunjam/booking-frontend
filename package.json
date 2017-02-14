@@ -14,6 +14,7 @@
     "connect-redis": "^3.2.0",
     "express": "^4.14.1",
     "express-session": "^1.15.1",
+    "got": "^6.7.1",
     "govuk-elements-marko": "^2.4.2",
     "govuk-elements-sass": "^2.2.1",
     "govuk-template-marko": "^0.19.2",

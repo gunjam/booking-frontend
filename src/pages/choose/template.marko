@@ -18,8 +18,12 @@
         <label class="visually-hidden">
           <i18n-message key="choose:form.roomList.label"/>
         </label>
-        <select class="form-control" id="room-list">
-          <option>Fish tank</option>
+        <select class="form-control" id="room-list" name="room">
+          <await(rooms from data.roomList)>
+            <option for(room in rooms) value="${room.id}">
+              ${room.name}
+            </option>
+          </await>
         </select>
       </div>
 
