@@ -9,14 +9,21 @@
 
   <layout-put into="content">
 
+    <gov-error-summary errors=errors heading=i18n('app:errorSummaryHeading')/>
+
     <h1 class="heading-xlarge">
       <i18n-message key="choose:heading"/>
     </h1>
 
-    <form method="post" action="/choose-an-option">
-      <div class="form-group" id="rooms">
-        <label class="visually-hidden">
-          <i18n-message key="choose:form.roomList.label"/>
+    <form method="post" action="/choose-a-room">
+      <div class="form-group ${errors.room && 'error'}" id="rooms">
+        <label>
+          <span class="visually-hidden">
+            <i18n-message key="choose:form.roomList.label"/>
+          </span>
+          <span if(errors.room) id="error-message-room" class="error-message">
+            ${errors.room}
+          </span>
         </label>
         <select class="form-control" id="room-list" name="room">
           <await(rooms from data.roomList)>

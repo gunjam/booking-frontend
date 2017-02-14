@@ -1,15 +1,11 @@
 {
   "heading": "Choose a room",
   "form": {
-    "type": {
-      "labelFind": "I want you to find a room for me",
-      "labelKnow": "I know which room I want to book",
+    "room": {
+      "label": "Choose a room",
       "errors": {
-        "presence": "Choose an option"
+        "presence": "You must pick a room"
       }
-    },
-    "roomList": {
-      "label": "Choose a room"
     },
     "submit": "Continue"
   }

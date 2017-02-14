@@ -9,7 +9,15 @@ function get(req, res) {
 }
 
 function post(req, res) {
-  template.render({}, res);
+  const {room} = req.body;
+
+  if (room === undefined) {
+    const roomList = getRooms();
+    const errors = {room: req.t('choose:form.room.errors.presence')};
+    template.render({roomList, errors}, res);
+  } else {
+    res.redirect(`/book/${room}`);
+  }
 }
 
 module.exports = {get, post};
