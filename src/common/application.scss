@@ -2,3 +2,41 @@ $path: '/node_modules/govuk_frontend_toolkit/images/';
 @function image-url() {}
 
 @import 'govuk-elements';
+
+#global-header #logo {
+  background: none;
+  height: 30px;
+  margin: 4px 15px 0;
+
+  img {
+    display: none;
+  }
+}
+
+.column-third {
+  input {
+    width: 100%;
+  }
+
+  .heading-medium {
+    margin-top: 0;
+  }
+}
+
+.change-date {
+  @extend %contain-floats;
+
+  .button {
+    float: left;
+    margin-top: 2.7em;
+
+    @include media(mobile) {
+      margin: 1em 0 2em;
+    }
+  }
+
+  > .form-group {
+    float: left;
+    width: auto;
+  }
+}

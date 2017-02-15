@@ -1,0 +1,6 @@
+{
+  "@bookings": {
+    "type": "object",
+    "required": true
+  }
+}

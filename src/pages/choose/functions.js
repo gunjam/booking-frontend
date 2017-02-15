@@ -3,18 +3,21 @@
 const {getRooms} = require('../../lib/booking-api');
 const template = require('./template.marko');
 
-function get(req, res) {
-  const roomList = getRooms();
-  template.render({roomList}, res);
+function get(req, res, next) {
+  getRooms()
+    .then(response => template.render({rooms: response.body}, res))
+    .catch(next);
 }
 
-function post(req, res) {
+function post(req, res, next) {
   const {room} = req.body;
 
   if (room === undefined) {
-    const roomList = getRooms();
     const errors = {room: req.t('choose:form.room.errors.presence')};
-    template.render({roomList, errors}, res);
+
+    getRooms()
+      .then(response => template.render({rooms: response.body, errors}, res))
+      .catch(next);
   } else {
     res.redirect(`/book/${room}`);
   }

@@ -1,0 +1,24 @@
+{
+  "title": "{{room-name}} - Bookings",
+  "heading": "{{-start-span}}Bookings{{-end-span}} {{room-name}}",
+  "dateForm": {
+    "date": {
+      "legend": "Date",
+      "errors": {
+        "presence": "Put in a date",
+        "format": "This is not a date"
+      }
+    },
+    "submit": "Change date"
+  },
+  "bookForm": {
+    "heading": "Book {{room-name}}",
+    "from": {
+      "legend": "From"
+    },
+    "until": {
+      "legend": "Until"
+    },
+    "submit": "Book"
+  }
+}

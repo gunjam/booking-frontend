@@ -1,0 +1,47 @@
+@import 'colours';
+@import 'css3';
+
+.calendar {
+  margin-top: .6em;
+  position: relative;
+}
+
+.time {
+  border-top: 1px solid $border-colour;
+  color: $secondary-text-colour;
+  font-size: 16px;
+  height: 2.55em;
+  line-height: .1;
+  margin-left: 3em;
+  text-indent: -3em;
+}
+
+.booking {
+  @include box-sizing(border-box);
+
+  background: $govuk-blue;
+  color: $white;
+  font-size: 16px;
+  left: 20%;
+  padding: 4px;
+  position: absolute;
+  width: 80%;
+}
+
+.now {
+  border-top: 2px solid $black;
+  height: 1.3em;
+  left: 10%;
+  margin: 0;
+  position: absolute;
+  width: 90%;
+}
+
+.now-time {
+  background: $black;
+  color: $white;
+  float: left;
+  font-size: 12px;
+  margin-top: -.65em;
+  padding: 0 4px;
+}

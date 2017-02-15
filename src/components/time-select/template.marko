@@ -1,0 +1,23 @@
+<div class="form-group">
+  <fieldset>
+    <legend>
+      ${data.legend}
+    </legend>
+    <label for="hours" class="visually-hidden">
+      Hours
+    </label>
+    <select class="form-control time-control" id="hours" name="${data.name}Hours">
+      <option for(hour in data.hours) value="${hour}">
+        ${hour}
+      </option>
+    </select>
+    <label for="minutes" class="visually-hidden">
+      Minutes
+    </label>
+    <select class="form-control time-control" id="minutes" name="${data.name}Minutes">
+      <option for(minute in data.minutes) value="${minute}">
+        ${minute}
+      </option>
+    </select>
+  </fieldset>
+</div>

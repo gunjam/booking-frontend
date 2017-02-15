@@ -1,0 +1,9 @@
+{
+  "@legend": "string",
+  "@hours": "object",
+  "@minutes": "object",
+  "@name": {
+    "type": "string",
+    "required": true
+  }
+}

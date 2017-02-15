@@ -17,7 +17,7 @@
 
     <form method="post" action="/choose-a-room">
       <div class="form-group ${errors.room && 'error'}" id="rooms">
-        <label>
+        <label for="room-list">
           <span class="visually-hidden">
             <i18n-message key="choose:form.roomList.label"/>
           </span>
@@ -26,11 +26,9 @@
           </span>
         </label>
         <select class="form-control" id="room-list" name="room">
-          <await(rooms from data.roomList)>
-            <option for(room in rooms) value="${room.id}">
-              ${room.name}
-            </option>
-          </await>
+          <option for(room in data.rooms) value="${room.id}">
+            ${room.name}
+          </option>
         </select>
       </div>
 

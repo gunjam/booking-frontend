@@ -1,0 +1,60 @@
+<i18n-var/>
+<var errors=(data.errors || false) values=(data.values || false)/>
+
+<layout-use("../../common/layout.marko")>
+
+  <layout-put into="page-title">
+    <i18n-message key="book:title" room-name="${data.room.name}"/> -
+    <i18n-message key="app:serviceName"/>
+  </layout-put>
+
+  <layout-put into="content">
+
+    <h1 class="heading-xlarge">
+      <i18n-message key="book:heading"
+        start-span="<span class=\"heading-secondary\">"
+        end-span="</span>" room-name="${data.room.name}"/>
+    </h1>
+
+    <div class="grid-row">
+
+      <div class="column-two-thirds">
+        <form class="change-date" action="/book/${data.room.id}">
+          <gov-date-input name="date" legend=i18n('book:dateForm.date.legend')
+            value-day=values.dateDay value-month=values.dateMonth
+            value-year=values.dateYear error=errors.date suffix="camel"/>
+
+          <button type="submit" class="button">
+            <i18n-message key="book:dateForm.submit"/>
+          </button>
+        </form>
+        <calendar-view bookings=data.room.bookings/>
+      </div>
+
+      <div class="column-third">
+        <form action="/book/${data.room.id}" method="post">
+          <h2 class="heading-medium">
+            <i18n-message key="book:bookForm.heading" room-name="${data.room.name}"/>
+          </h2>
+          <p class="lede">
+            15 Febuary 2017
+          </p>
+
+          <gov-input name="description" label="Reason for booking" error=errors.description
+            value=values.description/>
+          <gov-input name="name" label="Full name" error=errors.name
+            value=values.name/>
+
+          <time-select legend=i18n('book:bookForm.from.legend') name="from"/>
+          <time-select legend=i18n('book:bookForm.until.legend') name="until"/>
+
+          <button type="submit" class="button">
+            <i18n-message key="book:bookForm.submit"/>
+          </button>
+        </form>
+      </div>
+    </div>
+
+  </layout-put>
+
+</layout-use>

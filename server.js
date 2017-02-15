@@ -49,7 +49,7 @@ app.use(session(sessionConfig));
 // Load Middleware
 app.use(i18nextMiddleware.handle(i18next));
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(helmet(require('./config/helmet')));
+// app.use(helmet(require('./config/helmet')));
 
 // Set Content-Type header to text to make compression work for output stream
 app.use((req, res, next) => {
@@ -59,6 +59,7 @@ app.use((req, res, next) => {
 
 // Page routes
 app.use('/choose-a-room', require('./src/pages/choose'));
+app.use('/book', require('./src/pages/book'));
 
 // Redirect root to start page
 app.get('/', (req, res) => res.redirect('/choose-a-room'));
