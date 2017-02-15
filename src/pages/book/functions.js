@@ -59,7 +59,7 @@ function post(req, res, next) {
     const end = `${dateString}T${untilHours}:${untilMinutes}:00.000Z`;
 
     bookRoom({start, end, description, name, roomId})
-      .then(response => res.redirect(`/confirmation/${response.body.gid}`))
+      .then(response => res.redirect(`/confirmation/${response.body.id}`))
       .catch(next);
   }
 }

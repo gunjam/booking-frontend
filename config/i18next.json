@@ -18,7 +18,8 @@
     "app",
     "choose",
     "book",
-    "date"
+    "date",
+    "confirmation"
   ],
   "whitelist": [
     "en",

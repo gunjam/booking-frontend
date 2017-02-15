@@ -1,9 +1,6 @@
 'use strict';
 
-function padZero(input) {
-  const string = typeof input === 'string' ? input : String(input);
-  return string.length === 1 ? '0' + string : string;
-}
+const padZero = require('./pad-zero');
 
 module.exports = function (year, month, day) {
   const parsed = Date.parse(year + '-' + padZero(month) + '-' + padZero(day) +
