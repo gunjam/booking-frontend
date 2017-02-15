@@ -60,6 +60,7 @@ app.use((req, res, next) => {
 // Page routes
 app.use('/choose-a-room', require('./src/pages/choose'));
 app.use('/book', require('./src/pages/book'));
+app.use('/confirmation', require('./src/pages/confirmation'));
 
 // Redirect root to start page
 app.get('/', (req, res) => res.redirect('/choose-a-room'));

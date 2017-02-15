@@ -7,7 +7,7 @@ const formatDate = require('../utils/format-date');
 const apiUrl = (process.env.API_URL || 'http://localhost:3000') + '/api';
 
 function getBooking(id) {
-  return got(`${apiUrl}/Rooms/${id}`, {json: true});
+  return got(`${apiUrl}/Bookings/${id}`, {json: true, query: {'filter[include]': 'room'}});
 }
 
 function getRooms() {
