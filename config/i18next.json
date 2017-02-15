@@ -17,7 +17,8 @@
   "ns": [
     "app",
     "choose",
-    "book"
+    "book",
+    "date"
   ],
   "whitelist": [
     "en",

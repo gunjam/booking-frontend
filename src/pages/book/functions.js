@@ -12,7 +12,7 @@ function get(req, res, next) {
   const {date, errors} = getDateAndErrors(req);
 
   getRoomWithBookings(roomId, date)
-    .then(response => template.render({room: response.body, errors}, res))
+    .then(response => template.render({room: response.body, errors, date}, res))
     .catch(next);
 }
 
@@ -51,7 +51,7 @@ function post(req, res, next) {
 
   if (Object.keys(errors).length > 0) {
     getRoomWithBookings(roomId, date)
-      .then(response => template.render({room: response.body, errors}, res))
+      .then(response => template.render({room: response.body, errors, date}, res))
       .catch(next);
   } else {
     const dateString = formatDate(date);

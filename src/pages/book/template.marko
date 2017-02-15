@@ -37,7 +37,10 @@
             <i18n-message key="book:bookForm.heading" room-name="${data.room.name}"/>
           </h2>
           <p class="lede">
-            15 Febuary 2017
+            <i18n-message key="date:format"
+              day=data.date.getDate()
+              month=data.date.getMonth()
+              year=data.date.getFullYear()/>
           </p>
 
           <gov-input name="description" label="Reason for booking" error=errors.description
