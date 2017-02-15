@@ -1,13 +1,18 @@
-<div class="form-group">
+<div class="form-group${(data.error ? ' error' : '')}">
   <fieldset>
     <legend>
-      ${data.legend}
+      <span class="form-label">
+        ${data.legend}
+      </span>
+      <span if(data.error) id="error-message-${data.name}" class="error-message">
+        ${data.error}
+      </span>
     </legend>
     <label for="hours" class="visually-hidden">
       Hours
     </label>
     <select class="form-control time-control" id="hours" name="${data.name}Hours">
-      <option for(hour in data.hours) value="${hour}">
+      <option for(hour in data.hours) value="${hour}" selected=(hour === data.valueHours)>
         ${hour}
       </option>
     </select>
@@ -15,7 +20,7 @@
       Minutes
     </label>
     <select class="form-control time-control" id="minutes" name="${data.name}Minutes">
-      <option for(minute in data.minutes) value="${minute}">
+      <option for(minute in data.minutes) value="${minute}" selected=(minute === data.valueMinutes)>
         ${minute}
       </option>
     </select>

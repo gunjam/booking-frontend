@@ -2,6 +2,9 @@
   "@legend": "string",
   "@hours": "object",
   "@minutes": "object",
+  "@error": "object",
+  "@value-miutes": "string",
+  "@value-hours": "string",
   "@name": {
     "type": "string",
     "required": true

@@ -23,22 +23,30 @@ function post(req, res, next) {
     untilHours = '', untilMinutes = ''} = req.body;
 
   if (description === '') {
-    errors.description = 'Need a reason';
+    errors.description = req.t('book:bookForm.description.errors.presence');
   }
   if (name === '') {
     errors.name = 'Need a name';
   }
+
   if (isNotAny(fromHours, validHours)) {
-    errors.fromHours = 'Not good hours';
+    errors.from = req.t('book:bookForm.from.errors.hours');
+  } else if (isNotAny(fromMinutes, validMinutes)) {
+    errors.from = req.t('book:bookForm.from.errors.mintues');
   }
-  if (isNotAny(fromMinutes, validMinutes)) {
-    errors.fromMinutes = 'Not good Minutes';
-  }
+
   if (isNotAny(untilHours, validHours)) {
-    errors.fromHours = 'Not good hours';
+    errors.until = req.t('book:bookForm.until.errors.hours');
+  } else if (isNotAny(untilMinutes, validMinutes)) {
+    errors.until = req.t('book:bookForm.until.errors.mintues');
   }
-  if (isNotAny(untilMinutes, validMinutes)) {
-    errors.fromMinutes = 'Not good Minutes';
+
+  if (fromHours > untilHours) {
+    errors.from = req.t('book:bookForm.from.errors.backwards');
+    errors.until = req.t('book:bookForm.until.errors.backwards');
+  } else if (fromHours === untilHours && fromMinutes === untilMinutes) {
+    errors.from = req.t('book:bookForm.from.errors.same');
+    errors.until = req.t('book:bookForm.until.errors.same');
   }
 
   if (Object.keys(errors).length > 0) {
@@ -51,7 +59,7 @@ function post(req, res, next) {
     const end = `${dateString}T${untilHours}:${untilMinutes}:00.000Z`;
 
     bookRoom({start, end, description, name, roomId})
-      .then(response => res.redirect(`/confirmation/${response.body.id}`))
+      .then(response => res.redirect(`/confirmation/${response.body.gid}`))
       .catch(next);
   }
 }

@@ -13,11 +13,35 @@
   },
   "bookForm": {
     "heading": "Book {{room-name}}",
+    "description": {
+      "label": "Reason for boooking",
+      "errors": {
+        "presence": "Need a reason"
+      }
+    },
+    "name": {
+      "label": "Full name",
+      "errors": {
+        "presence": "Need a name"
+      }
+    },
     "from": {
-      "legend": "From"
+      "legend": "From",
+      "errors": {
+        "hours": "Not good hours",
+        "mintues": "Not good minutes",
+        "backwards": "From can't be greater than until",
+        "same": "From time can't be the same as util time!"
+      }
     },
     "until": {
-      "legend": "Until"
+      "legend": "Until",
+      "errors": {
+        "hours": "Not good hours",
+        "mintues": "Not good minutes",
+        "backwards": "Until can't be less than from",
+        "same": "Until time can't be the same as from time!"
+      }
     },
     "submit": "Book"
   }
