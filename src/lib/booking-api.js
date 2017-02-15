@@ -6,6 +6,10 @@ const formatDate = require('../utils/format-date');
 
 const apiUrl = (process.env.API_URL || 'http://localhost:3000') + '/api';
 
+function getBooking(id) {
+  return got(`${apiUrl}/Rooms/${id}`, {json: true});
+}
+
 function getRooms() {
   return got(`${apiUrl}/Rooms`, {json: true});
 }
@@ -37,4 +41,4 @@ function getRoomWithBookings(id, date) {
   });
 }
 
-module.exports = {getRooms, getRoomWithBookings, bookRoom};
+module.exports = {getBooking, getRooms, getRoomWithBookings, bookRoom};
