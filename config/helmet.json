@@ -16,6 +16,10 @@
       "fontSrc": [
         "'self'",
         "data: blob:"
+      ],
+      "styleSrc": [
+        "'self'",
+        "'unsafe-inline'"
       ]
     },
     "reportOnly": false,
