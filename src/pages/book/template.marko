@@ -60,8 +60,10 @@
           <gov-input name="name" label="Full name" error=errors.name
             value=values.name/>
 
-          <time-select legend=i18n('book:bookForm.from.legend') name="from" error=errors.from/>
-          <time-select legend=i18n('book:bookForm.until.legend') name="until" error=errors.until/>
+          <time-select legend=i18n('book:bookForm.from.legend') name="from"
+            error=errors.from value-hours=values.fromHours value-minutes=values.fromMinutes/>
+          <time-select legend=i18n('book:bookForm.until.legend') name="until"
+            error=errors.until value-hours=values.untilHours value-minutes=values.untilMinutes/>
 
           <button type="submit" class="button">
             <i18n-message key="book:bookForm.submit"/>

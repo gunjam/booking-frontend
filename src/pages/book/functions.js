@@ -10,9 +10,11 @@ const template = require('./template.marko');
 function get(req, res, next) {
   const {roomId} = req.params;
   const {date, errors} = getDateAndErrors(req);
+  const {dateDay, dateMonth, dateYear} = req.query;
+  const values = {dateDay, dateMonth, dateYear};
 
   getRoomWithBookings(roomId, date)
-    .then(response => template.render({room: response.body, errors, date}, res))
+    .then(response => template.render({room: response.body, date, errors, values}, res))
     .catch(next);
 }
 
@@ -50,8 +52,12 @@ function post(req, res, next) {
   }
 
   if (Object.keys(errors).length > 0) {
+    const {dateDay, dateMonth, dateYear} = req.query;
+    const values = {description, name, fromHours, fromMinutes, untilHours,
+      untilMinutes, dateDay, dateMonth, dateYear};
+
     getRoomWithBookings(roomId, date)
-      .then(response => template.render({room: response.body, errors, date}, res))
+      .then(response => template.render({room: response.body, date, errors, values}, res))
       .catch(next);
   } else {
     const dateString = formatDate(date);
