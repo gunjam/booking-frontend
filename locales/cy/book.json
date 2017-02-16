@@ -1,0 +1,50 @@
+{
+  "title": "{{room-name}} - Archebion",
+  "heading": "{{-start-span}}Archebion{{-end-span}} {{room-name}}",
+  "dateForm": {
+    "date": {
+      "legend": "Dyddiad",
+      "errors": {
+        "presence": "Rhowch ddyddiad",
+        "format": "Nid yw hwn yn ddyddiad"
+      }
+    },
+    "submit": "dyddiad Newid"
+  },
+  "bookForm": {
+    "heading": "Archebwch {{room-name}}",
+    "description": {
+      "label": "Rheswm dros archebu",
+      "errors": {
+        "presence": "Angen rheswm"
+      }
+    },
+    "name": {
+      "label": "Enw llawn",
+      "errors": {
+        "presence": "Angen enw"
+      }
+    },
+    "from": {
+      "legend": "O",
+      "errors": {
+        "hours": "Nid yw oriau da",
+        "mintues": "Nid yw cofnodion da",
+        "backwards": "O na all fod yn fwy nag nes",
+        "same": "O bryd ni all fod yr un fath ag util pryd!",
+        "double": "Methu dwbl llyfr!"
+      }
+    },
+    "until": {
+      "legend": "Tan",
+      "errors": {
+        "hours": "Nid yw oriau da",
+        "mintues": "Nid yw cofnodion da",
+        "backwards": "Hyd nes na all fod yn llai nag o",
+        "same": "Tan y tro ni all fod yr un fath ag o dro!",
+        "double": "Methu dwbl llyfr!"
+      }
+    },
+    "submit": "Archebion"
+  }
+}

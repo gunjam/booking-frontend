@@ -1,0 +1,16 @@
+{
+  "serviceName": "Archebwch ystafell",
+  "skipLink": "Mynd i'r prif gynnwys",
+  "cookieMessage": "Rydym yn defnyddio cwcis i wneud y safle yn symlach {{-link-start}}Cael gwybod mwy am gwcis{{-link-end}}.",
+  "phaseDescription": "Mae hwn yn wasanaeth newydd - eich adborth yn ein helpu i wella.",
+  "footer": {
+    "supportLinks": "Mae cysylltiadau Cymorth",
+    "cookies": "Cookies",
+    "privacy": "Preifatrwydd",
+    "feedback": "Adborth",
+    "madeInNewcastle": "Gwnaed yng Newcastle gan y {{-link-start}} Adran Gwaith a Phensiynau {{-link-end}}",
+    "ogl": "Drwydded Llywodraeth Agored",
+    "availableUnderOgl": "Mae'r holl gynnwys ar gael o dan y {{-link-start}} v3.0 Drwydded Llywodraeth Agored {{-link-end}}, ac eithrio lle nodir yn wahanol",
+    "copyright": "Hawlfraint y Goron"
+  }
+}

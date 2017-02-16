@@ -1,0 +1,55 @@
+@import 'colours';
+@import 'css3';
+
+.available-languages {
+  @include box-sizing(border-box);
+
+  padding: 0 15px;
+}
+
+.translation-list {
+  border-bottom: 1px solid $border-colour;
+  list-style: none;
+  padding: 15px 0 10px;
+
+  ::after {
+    clear: both;
+    content: ' ';
+    display: block;
+  }
+}
+
+.translation {
+  border-right: 1px solid $border-colour;
+  display: block;
+  float: left;
+  height: 16px;
+  margin: 3px 10px 2px 0;
+  padding: 0 10px 0 0;
+
+  a,
+  span {
+    display: block;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.14286;
+    margin-top: -1px;
+    text-transform: none;
+  }
+}
+
+.last {
+  border-right: 0;
+}
+
+@media(min-width:641px) {
+  .available-languages {
+    float: right;
+    width: 33.33333%;
+  }
+
+  .translation a,
+  .translation span {
+    line-height: 1.25;
+  }
+}

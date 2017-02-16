@@ -55,10 +55,10 @@
               year=data.date.getFullYear()/>
           </p>
 
-          <gov-input name="description" label="Reason for booking" error=errors.description
-            value=values.description/>
-          <gov-input name="name" label="Full name" error=errors.name
-            value=values.name/>
+          <gov-input name="description" label=i18n('book:bookForm.description.label')
+            error=errors.description value=values.description/>
+          <gov-input name="name" label=i18n('book:bookForm.name.label')
+            error=errors.name value=values.name/>
 
           <time-select legend=i18n('book:bookForm.from.legend') name="from"
             error=errors.from value-hours=values.fromHours value-minutes=values.fromMinutes/>
