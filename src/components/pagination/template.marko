@@ -1,0 +1,14 @@
+<nav role="navigation">
+  <ul class="previous-next-navigation group">
+    <li class="previous" if(data.prevUrl)>
+      <a href=data.prevUrl>
+        ${data.prevText}
+      </a>
+    </li>
+    <li class="next" if(data.nextUrl)>
+      <a href=data.nextUrl>
+        ${data.nextText}
+      </a>
+    </li>
+  </ul>
+</nav>

@@ -1,5 +1,5 @@
 {
   "booked": "{{room-name}} booked",
   "description": "{{description}}: {{name}}",
-  "time": "$t(date:format, {'day': {{day}}, 'month': {{month}}, 'year': {{year}}}) - {{start}} until {{end}}"
+  "time": "$t(date:dayMonthYear, {'day': {{day}}, 'month': {{month}}, 'year': {{year}}}) - {{start}} until {{end}}"
 }

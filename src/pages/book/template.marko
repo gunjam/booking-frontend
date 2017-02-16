@@ -1,5 +1,10 @@
 <i18n-var/>
-<var errors=(data.errors || false) values=(data.values || false)/>
+<script marko-init>
+  const addDays = require('date-fns/add_days');
+  const subDays = require('date-fns/sub_days');
+</script>
+<var errors=(data.errors || false) values=(data.values || false)
+  prev=subDays(data.date, 1) next=addDays(data.date, 1)/>
 
 <layout-use("../../common/layout.marko")>
 
@@ -22,13 +27,20 @@
         <form class="change-date" action="/book/${data.room.id}">
           <gov-date-input name="date" legend=i18n('book:dateForm.date.legend')
             value-day=values.dateDay value-month=values.dateMonth
-            value-year=values.dateYear error=errors.date suffix="camel"/>
+            value-year=values.dateYear maxyear="9999"
+            error=errors.date suffix="camel"/>
 
           <button type="submit" class="button">
             <i18n-message key="book:dateForm.submit"/>
           </button>
         </form>
+
         <calendar-view bookings=data.room.bookings/>
+
+        <pagination prev-url="?dateDay=${prev.getDate()}&dateMonth=${prev.getMonth() + 1}&dateYear=${prev.getFullYear()}"
+          next-url="?dateDay=${next.getDate()}&dateMonth=${next.getMonth() + 1}&dateYear=${next.getFullYear()}"
+          prev-text=i18n('date:dayMonth', {day: prev.getDate(), month: prev.getMonth()})
+          next-text=i18n('date:dayMonth', {day: next.getDate(), month: next.getMonth()})/>
       </div>
 
       <div class="column-third">
@@ -37,7 +49,7 @@
             <i18n-message key="book:bookForm.heading" room-name="${data.room.name}"/>
           </h2>
           <p class="lede">
-            <i18n-message key="date:format"
+            <i18n-message key="date:dayMonthYear"
               day=data.date.getDate()
               month=data.date.getMonth()
               year=data.date.getFullYear()/>

@@ -1,5 +1,6 @@
 {
-  "format": "{{day}} $t(date:months.{{month}}) {{year}}",
+  "dayMonthYear": "{{day}} $t(date:months.{{month}}) {{year}}",
+  "dayMonth": "{{day}} $t(date:months.{{month}})",
   "months": {
     "0": "January",
     "1": "February",
