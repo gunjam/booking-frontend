@@ -1,6 +1,7 @@
 <script marko-init>
   const heightOfBooking = require('../../utils/height-of-booking');
   const positionFromTop = require('../../utils/position-from-top');
+  const formatTime = require('../../utils/format-time');
   const {validHours} = require('../../utils/consts');
 </script>
 
@@ -26,6 +27,6 @@
   <var now=(new Date()) top=positionFromTop(now)/>
   <p class="now" style="top: ${top}%" if(now.getHours() < validHours[validHours.length - 1])>
     <span class="visuallyhidden">This time is currently:</span>
-    <span class="now-time">${now.getHours() + ':' + now.getMinutes()}</span>
+    <span class="now-time">${formatTime(now)}</span>
   </p>
 </div>
