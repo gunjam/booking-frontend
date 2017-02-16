@@ -9,8 +9,6 @@ const helmet = require('helmet');
 const i18next = require('i18next');
 const FilesystemBackend = require('i18next-node-fs-backend');
 const i18nextMiddleware = require('i18next-express-middleware');
-const session = require('express-session');
-const RedisStore = require('connect-redis')(session);
 
 // Configure Lasso.js
 require('lasso').configure(require('./config/lasso'));
@@ -39,17 +37,10 @@ app.get('/ping', (req, res) => {
 // Serve static assets
 app.use(require('lasso/middleware').serveStatic());
 
-// Setup redis session
-const sessionConfig = require('./config/session');
-sessionConfig.store = new RedisStore(require('./config/redis'));
-
-app.set('trust proxy', 1);
-app.use(session(sessionConfig));
-
 // Load Middleware
 app.use(i18nextMiddleware.handle(i18next));
 app.use(bodyParser.urlencoded({extended: true}));
-// app.use(helmet(require('./config/helmet')));
+app.use(helmet(require('./config/helmet')));
 
 // Set Content-Type header to text to make compression work for output stream
 app.use((req, res, next) => {

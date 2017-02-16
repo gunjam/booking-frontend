@@ -11,10 +11,8 @@
   "dependencies": {
     "body-parser": "^1.16.1",
     "compression": "^1.6.2",
-    "connect-redis": "^3.2.0",
     "date-fns": "^1.27.2",
     "express": "^4.14.1",
-    "express-session": "^1.15.1",
     "got": "^6.7.1",
     "govuk-elements-marko": "^2.4.2",
     "govuk-elements-sass": "^2.2.1",
