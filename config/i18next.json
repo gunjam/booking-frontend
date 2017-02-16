@@ -19,7 +19,8 @@
     "choose",
     "book",
     "date",
-    "confirmation"
+    "confirmation",
+    "calendar"
   ],
   "whitelist": [
     "en",

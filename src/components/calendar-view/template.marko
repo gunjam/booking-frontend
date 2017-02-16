@@ -6,9 +6,9 @@
 </script>
 
 <div class="calendar">
-  <ul class="times" aria-hidden="true">
+  <ol class="times" aria-hidden="true">
     <li class="time" for(hour in validHours)>${hour}:00</li>
-  </ul>
+  </ol>
 
   <dl class="bookings" if(data.bookings.length)>
     <for(booking in data.bookings)>
@@ -16,17 +16,20 @@
        height=heightOfBooking(startDate, endDate) top=positionFromTop(startDate)/>
 
       <dt class="visuallyhidden">
-        ${booking.start} until ${booking.end}
+        <i18n-message key="calendar:until" start=booking.start end=booking.end/>
       </dt>
       <dd class="booking" style="height: ${height}%; top: ${top}%">
-        ${booking.description}: ${booking.name}
+        <i18n-message key="calendar:description" description=booking.description
+          name=booking.name/>
       </dd>
     </for>
   </dl>
 
   <var now=(new Date()) top=positionFromTop(now)/>
   <p class="now" style="top: ${top}%" if(now.getHours() < validHours[validHours.length - 1])>
-    <span class="visuallyhidden">This time is currently:</span>
-    <span class="now-time">${formatTime(now)}</span>
+    <span class="now-time">
+      <i18n-message key="calendar:now" hide-start="<span class=\"visuallyhidden\">"
+      hide-end="</span>" time=formatTime(now)/>
+    </span>
   </p>
 </div>
