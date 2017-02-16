@@ -31,7 +31,8 @@
         "hours": "Not good hours",
         "mintues": "Not good minutes",
         "backwards": "From can't be greater than until",
-        "same": "From time can't be the same as util time!"
+        "same": "From time can't be the same as util time!",
+        "double": "Can't double book!"
       }
     },
     "until": {
@@ -40,7 +41,8 @@
         "hours": "Not good hours",
         "mintues": "Not good minutes",
         "backwards": "Until can't be less than from",
-        "same": "Until time can't be the same as from time!"
+        "same": "Until time can't be the same as from time!",
+        "double": "Can't double book!"
       }
     },
     "submit": "Book"

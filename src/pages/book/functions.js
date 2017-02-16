@@ -23,6 +23,9 @@ function post(req, res, next) {
   const {date, errors} = getDateAndErrors(req);
   const {description = '', name = '', fromHours = '', fromMinutes = '',
     untilHours = '', untilMinutes = ''} = req.body;
+  const {dateDay, dateMonth, dateYear} = req.query;
+  const values = {description, name, fromHours, fromMinutes, untilHours,
+    untilMinutes, dateDay, dateMonth, dateYear};
 
   if (description === '') {
     errors.description = req.t('book:bookForm.description.errors.presence');
@@ -52,10 +55,6 @@ function post(req, res, next) {
   }
 
   if (Object.keys(errors).length > 0) {
-    const {dateDay, dateMonth, dateYear} = req.query;
-    const values = {description, name, fromHours, fromMinutes, untilHours,
-      untilMinutes, dateDay, dateMonth, dateYear};
-
     getRoomWithBookings(roomId, date)
       .then(response => template.render({room: response.body, date, errors, values}, res))
       .catch(next);
@@ -66,7 +65,18 @@ function post(req, res, next) {
 
     bookRoom({start, end, description, name, roomId})
       .then(response => res.redirect(`/confirmation/${response.body.id}`))
-      .catch(next);
+      .catch(err => {
+        if ((err.response.body.message || '').indexOf('doubleBooking')) {
+          const double = req.t('book:bookForm.from.errors.double');
+          const errors = {from: double, until: double};
+
+          getRoomWithBookings(roomId, date)
+            .then(response => template.render({room: response.body, date, errors, values}, res))
+            .catch(next);
+        } else {
+          next(err);
+        }
+      });
   }
 }
 

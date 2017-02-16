@@ -24,7 +24,7 @@
     <div class="grid-row">
 
       <div class="column-two-thirds">
-        <form class="change-date" action="/book/${data.room.id}">
+        <form class="change-date">
           <gov-date-input name="date" legend=i18n('book:dateForm.date.legend')
             value-day=values.dateDay value-month=values.dateMonth
             value-year=values.dateYear maxyear="9999"
@@ -44,7 +44,7 @@
       </div>
 
       <div class="column-third">
-        <form action="/book/${data.room.id}" method="post">
+        <form method="post">
           <h2 class="heading-medium">
             <i18n-message key="book:bookForm.heading" room-name="${data.room.name}"/>
           </h2>
