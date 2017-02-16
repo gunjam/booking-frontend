@@ -20,7 +20,8 @@
     "book",
     "date",
     "confirmation",
-    "calendar"
+    "calendar",
+    "error"
   ],
   "whitelist": [
     "en",

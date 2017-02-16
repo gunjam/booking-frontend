@@ -1,0 +1,20 @@
+<i18n-var/>
+<layout-use("../../common/layout.marko")>
+
+  <layout-put into="page-title">
+    <i18n-message key="error:${data.status}.heading"/>
+  </layout-put>
+
+  <layout-put into="content">
+
+    <h1 class="heading-xlarge">
+      <i18n-message key="error:${data.status}.heading"/>
+    </h1>
+
+    <p class="text lede">
+      <i18n-message key="error:${data.status}.body"/>
+    </p>
+
+  </layout-put>
+
+</layout-use>

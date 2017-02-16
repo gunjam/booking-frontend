@@ -56,6 +56,9 @@ app.use('/confirmation', require('./src/pages/confirmation'));
 // Redirect root to start page
 app.get('/', (req, res) => res.redirect('/choose-a-room'));
 
+// Handler errors
+app.use(require('./src/pages/error'));
+
 // Listen!
 app.listen(port, err => {
   if (err) {

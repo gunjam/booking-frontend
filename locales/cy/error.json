@@ -1,0 +1,10 @@
+{
+  "500": {
+    "heading": "Mae rhywbeth wedi mynd o'i le",
+    "body": "Mae'r gwasanaeth ar gael dros dro, rhowch gynnig arni nes ymlaen."
+  },
+  "404": {
+    "heading": "Tudalen heb ei darganfod",
+    "body": "Os byddwch yn mynd i gyfeiriad gwe gwiriwch ei fod yn gywir."
+  }
+}

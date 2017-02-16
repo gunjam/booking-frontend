@@ -1,0 +1,10 @@
+{
+  "500": {
+    "heading": "Something’s gone wrong",
+    "body": "The service is temporarily unavailable, please try again later."
+  },
+  "404": {
+    "heading": "Page not found",
+    "body": "If you entered a web address please check it was correct."
+  }
+}
