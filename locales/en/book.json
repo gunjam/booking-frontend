@@ -14,7 +14,7 @@
   "bookForm": {
     "heading": "Book {{room-name}}",
     "description": {
-      "label": "Reason for boooking",
+      "label": "Reason for booking",
       "errors": {
         "presence": "Need a reason"
       }
