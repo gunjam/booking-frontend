@@ -5,7 +5,6 @@ require('marko/node-require').install();
 const bodyParser = require('body-parser');
 const compression = require('compression');
 const express = require('express');
-const ipFilter = require('express-ipfilter').IpFilter;
 const helmet = require('helmet');
 const i18next = require('i18next');
 const FilesystemBackend = require('i18next-node-fs-backend');
@@ -35,15 +34,28 @@ app.get('/ping', (req, res) => {
   res.status(200).send('pong');
 });
 
+// Serve static assets
+app.use(require('lasso/middleware').serveStatic());
+
 // Ip Filter
 if (process.env.NODE_ENV === 'production') {
   const ipWhiteList = JSON.parse(process.env.IP_WHITE_LIST);
 
-  app.use(ipFilter(ipWhiteList, {mode: 'allow'}));
-}
+  app.use((req, res, next) => {
+    const clientIp =
+      req.headers['x-forwarded-for'] ||
+      req.socket.remoteAddress ||
+      (req.socket.socket || {}).remoteAddress ||
+      req.ip;
 
-// Serve static assets
-app.use(require('lasso/middleware').serveStatic());
+    if (ipWhiteList.includes(clientIp)) {
+      console.log(`Allowed IP ${clientIp}`);
+      return next();
+    }
+    res.status(403).send('Go away');
+    console.error(`Blocked IP ${clientIp}`);
+  });
+}
 
 // Load Middleware
 app.use(i18nextMiddleware.handle(i18next));
