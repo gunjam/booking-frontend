@@ -2,5 +2,9 @@
   "@bookings": {
     "type": "object",
     "required": true
+  },
+  "@date": {
+    "type": "object",
+    "required": true
   }
 }

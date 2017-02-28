@@ -35,7 +35,7 @@
           </button>
         </form>
 
-        <calendar-view bookings=data.room.bookings/>
+        <calendar-view bookings=data.room.bookings date=data.date/>
 
         <pagination prev-url="?dateDay=${prev.getDate()}&dateMonth=${prev.getMonth() + 1}&dateYear=${prev.getFullYear()}"
           next-url="?dateDay=${next.getDate()}&dateMonth=${next.getMonth() + 1}&dateYear=${next.getFullYear()}"

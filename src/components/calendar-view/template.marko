@@ -2,6 +2,7 @@
   const heightOfBooking = require('../../utils/height-of-booking');
   const positionFromTop = require('../../utils/position-from-top');
   const formatTime = require('../../utils/format-time');
+  const isToday = require('date-fns/is_today');
   const {validHours} = require('../../utils/consts');
 </script>
 
@@ -26,7 +27,7 @@
   </dl>
 
   <var now=(new Date()) top=positionFromTop(now)/>
-  <p class="now" style="top: ${top}%" if(now.getHours() < validHours[validHours.length - 1])>
+  <p class="now" style="top: ${top}%" if(isToday(data.date) && now.getHours() < validHours[validHours.length - 1])>
     <span class="now-time">
       <i18n-message key="calendar:now" hide-start="<span class=\"visuallyhidden\">"
       hide-end="</span>" time=formatTime(now)/>
