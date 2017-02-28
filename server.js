@@ -31,7 +31,7 @@ app.disable('x-powered-by');
 
 // Ip Filter
 if (process.env.NODE_ENV === 'production') {
-  const filter = JSON.stringify(process.env.IP_WHITE_LIST);
+  const filter = JSON.parse(process.env.IP_WHITE_LIST);
   const forbidden = '403: No book for you';
 
   app.use(expressIpFilter({forbidden, filter}));
