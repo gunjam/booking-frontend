@@ -5,7 +5,7 @@ require('marko/node-require').install();
 const bodyParser = require('body-parser');
 const compression = require('compression');
 const express = require('express');
-const expressIpFilter = require('express-ip-filter');
+const ipFilter = require('express-ipfilter').IpFilter;
 const helmet = require('helmet');
 const i18next = require('i18next');
 const FilesystemBackend = require('i18next-node-fs-backend');
@@ -29,20 +29,18 @@ app.use(compression());
 // Disable x-powered-by header
 app.disable('x-powered-by');
 
-// Ip Filter
-if (process.env.NODE_ENV === 'production') {
-  const filter = JSON.parse(process.env.IP_WHITE_LIST);
-  const forbidden = '403: No book for you';
-
-  app.use(expressIpFilter({forbidden, filter}));
-  console.error(forbidden);
-}
-
 // Uptime ping end point
 app.get('/ping', (req, res) => {
   res.setHeader('Content-Type', 'text/plain');
   res.status(200).send('pong');
 });
+
+// Ip Filter
+if (process.env.NODE_ENV === 'production') {
+  const ipWhiteList = JSON.parse(process.env.IP_WHITE_LIST);
+
+  app.use(ipFilter(ipWhiteList, {mode: 'allow'}));
+}
 
 // Serve static assets
 app.use(require('lasso/middleware').serveStatic());
