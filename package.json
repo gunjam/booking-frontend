@@ -13,6 +13,7 @@
     "compression": "^1.6.2",
     "date-fns": "^1.27.2",
     "express": "^4.14.1",
+    "express-ip-filter": "^2.0.0",
     "got": "^6.7.1",
     "govuk-elements-marko": "^2.4.2",
     "govuk-elements-sass": "^2.2.1",
