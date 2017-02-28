@@ -35,6 +35,7 @@ if (process.env.NODE_ENV === 'production') {
   const forbidden = '403: No book for you';
 
   app.use(expressIpFilter({forbidden, filter}));
+  console.error(forbidden);
 }
 
 // Uptime ping end point
