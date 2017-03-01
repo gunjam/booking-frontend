@@ -9,21 +9,4 @@ function get(req, res, next) {
     .catch(next);
 }
 
-function post(req, res, next) {
-  const {room} = req.body;
-
-  if (room === undefined) {
-    const errors = {room: req.t('choose:form.room.errors.presence')};
-
-    getLocationsAndRooms()
-      .then(response => {
-        console.log(response.body);
-        template.render({locations: response.body, errors}, res);
-      })
-      .catch(next);
-  } else {
-    res.redirect(`/book/${room}`);
-  }
-}
-
-module.exports = {get, post};
+module.exports = {get};

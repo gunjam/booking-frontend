@@ -1,5 +1,4 @@
 <i18n-var/>
-<var errors=(data.errors || false) values=(data.values || false)/>
 
 <layout-use("../../common/layout.marko")>
 
@@ -8,8 +7,6 @@
   </layout-put>
 
   <layout-put into="content">
-
-    <gov-error-summary errors=errors heading=i18n('app:errorSummaryHeading')/>
 
     <h1 class="heading-xlarge">
       <i18n-message key="choose:heading"/>
