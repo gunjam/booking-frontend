@@ -42,11 +42,13 @@ if (process.env.NODE_ENV === 'production') {
   const ipWhiteList = JSON.parse(process.env.IP_WHITE_LIST);
 
   app.use((req, res, next) => {
-    const clientIp =
+    const ips =
       req.headers['x-forwarded-for'] ||
       req.socket.remoteAddress ||
       (req.socket.socket || {}).remoteAddress ||
       req.ip;
+
+    const clientIp = ips.split(', ').pop();
 
     if (ipWhiteList.includes(clientIp)) {
       console.log(`Allowed IP ${clientIp}`);
