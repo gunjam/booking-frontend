@@ -40,3 +40,25 @@ $path: '/node_modules/govuk_frontend_toolkit/images/';
     width: auto;
   }
 }
+
+.floor-plate {
+  background-color: $grey-3;
+  font-weight: bold;
+  padding: 5px;
+}
+
+.room-list {
+  background-color: $grey-4;
+
+  li {
+    border-color: $grey-3;
+    border-style: solid;
+    border-top: 0;
+    border-width: 1px;
+    padding: 5px;
+
+    &:last-child {
+      margin-bottom: 2em;
+    }
+  }
+}
