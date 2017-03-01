@@ -1,6 +1,6 @@
 {
   "title": "{{room-name}} - Archebion",
-  "heading": "{{-start-span}}Archebion{{-end-span}} {{room-name}}",
+  "features": "{{-strong-start}}Nodweddion:{{-strong-end}} {{features}}",
   "dateForm": {
     "date": {
       "legend": "Dyddiad",

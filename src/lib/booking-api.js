@@ -4,14 +4,26 @@ const got = require('got');
 const addDays = require('date-fns/add_days');
 const formatDate = require('../utils/format-date');
 
-const apiUrl = (process.env.API_URL || 'http://localhost:3000') + '/api';
+const apiUrl = 'http://room-bookings-api.herokuapp.com/api';
 
 function getBooking(id) {
   return got(`${apiUrl}/Bookings/${id}`, {json: true, query: {'filter[include]': 'room'}});
 }
 
-function getRooms() {
-  return got(`${apiUrl}/Rooms`, {json: true});
+function getLocationsAndRooms() {
+  return got(`${apiUrl}/Locations`, {
+    json: true,
+    query: {
+      filter: JSON.stringify({
+        include: {
+          relation: 'rooms',
+          scope: {
+            order: 'name ASC'
+          }
+        }
+      })
+    }
+  });
 }
 
 function bookRoom(body) {
@@ -25,20 +37,24 @@ function getRoomWithBookings(id, date) {
     json: true,
     query: {
       filter: JSON.stringify({
-        include: {
-          relation: 'bookings',
-          scope: {
-            where: {
-              and: [
-                {start: {gt: formatDate(date)}},
-                {start: {lt: formatDate(nextDay)}}
-              ]
+        include: [
+          'location',
+          'features',
+          {
+            relation: 'bookings',
+            scope: {
+              where: {
+                and: [
+                  {start: {gt: formatDate(date)}},
+                  {start: {lt: formatDate(nextDay)}}
+                ]
+              }
             }
           }
-        }
+        ]
       })
     }
   });
 }
 
-module.exports = {getBooking, getRooms, getRoomWithBookings, bookRoom};
+module.exports = {getBooking, getLocationsAndRooms, getRoomWithBookings, bookRoom};

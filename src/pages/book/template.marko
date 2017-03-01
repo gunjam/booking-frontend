@@ -15,14 +15,19 @@
 
   <layout-put into="content">
 
-    <h1 class="heading-xlarge">
-      <i18n-message key="book:heading"
-        start-span="<span class=\"heading-secondary\">"
-        end-span="</span>" room-name="${data.room.name}"/>
+    <h1 class="heading-xlarge no-margin-bottom">
+      <span class="heading-secondary">
+        ${data.room.location.name}
+      </span>
+      ${data.room.name}
     </h1>
 
-    <div class="grid-row">
+    <p>
+      <i18n-message key="book:features" strong-start="<strong>"
+        strong-end="</strong>" features=data.room.features.map(e => e.description).join(', ')/>
+    </p>
 
+    <div class="grid-row">
       <div class="column-two-thirds">
         <form class="change-date">
           <gov-date-input name="date" legend=i18n('book:dateForm.date.legend')

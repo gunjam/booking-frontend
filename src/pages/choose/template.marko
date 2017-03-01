@@ -1,5 +1,4 @@
 <i18n-var/>
-<var errors=(data.errors || false) values=(data.values || false)/>
 
 <layout-use("../../common/layout.marko")>
 
@@ -9,33 +8,24 @@
 
   <layout-put into="content">
 
-    <gov-error-summary errors=errors heading=i18n('app:errorSummaryHeading')/>
-
     <h1 class="heading-xlarge">
       <i18n-message key="choose:heading"/>
     </h1>
 
-    <form method="post" action="/choose-a-room">
-      <div class="form-group ${errors.room && 'error'}" id="rooms">
-        <label for="room-list">
-          <span class="visually-hidden">
-            <i18n-message key="choose:form.roomList.label"/>
-          </span>
-          <span if(errors.room) id="error-message-room" class="error-message">
-            ${errors.room}
-          </span>
-        </label>
-        <select class="form-control" id="room-list" name="room">
-          <option for(room in data.rooms) value="${room.id}">
-            ${room.name}
-          </option>
-        </select>
+    <div class="grid-row">
+      <div class="column-two-thirds">
+        <for(location in data.locations)>
+          <h2 class="floor-plate">
+            <i18n-message key="choose:floorplate" name=location.name/>
+          </h2>
+          <ul class="room-list">
+            <li for(room in location.rooms)>
+              <a href="/book/${room.id}">${room.name}</a>
+            </li>
+          </ul>
+        </for>
       </div>
-
-      <button type="submit" class="button">
-        <i18n-message key="choose:form.submit"/>
-      </button>
-    </form>
+    </div>
 
   </layout-put>
 
