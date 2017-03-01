@@ -3,6 +3,10 @@ $path: '/node_modules/govuk_frontend_toolkit/images/';
 
 @import 'govuk-elements';
 
+strong {
+  font-weight: bold;
+}
+
 #global-header #logo {
   background: none;
   height: 30px;
@@ -61,4 +65,8 @@ $path: '/node_modules/govuk_frontend_toolkit/images/';
       margin-bottom: 2em;
     }
   }
+}
+
+.no-margin-bottom {
+  margin-bottom: 0;
 }

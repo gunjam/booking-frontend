@@ -37,17 +37,21 @@ function getRoomWithBookings(id, date) {
     json: true,
     query: {
       filter: JSON.stringify({
-        include: {
-          relation: 'bookings',
-          scope: {
-            where: {
-              and: [
-                {start: {gt: formatDate(date)}},
-                {start: {lt: formatDate(nextDay)}}
-              ]
+        include: [
+          'location',
+          'features',
+          {
+            relation: 'bookings',
+            scope: {
+              where: {
+                and: [
+                  {start: {gt: formatDate(date)}},
+                  {start: {lt: formatDate(nextDay)}}
+                ]
+              }
             }
           }
-        }
+        ]
       })
     }
   });
