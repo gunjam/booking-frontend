@@ -1,12 +1,4 @@
 {
   "heading": "Choose a room",
-  "form": {
-    "room": {
-      "label": "Choose a room",
-      "errors": {
-        "presence": "You must pick a room"
-      }
-    },
-    "submit": "Continue"
-  }
+  "floorplate": "Floorplate {{name}}"
 }

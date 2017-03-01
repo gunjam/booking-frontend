@@ -17,19 +17,16 @@
 
     <div class="grid-row">
       <div class="column-two-thirds">
-        <h2 class="floor-plate">Floorplate BP9051</h2>
-        <ul class="room-list">
-          <li><a href="#">Discovery Two</a></li>
-          <li><a href="#">Fish Bowl</a></li>
-          <li><a href="#">Media Suite</a></li>
-        </ul>
-
-        <h2 class="floor-plate">Floorplate BP9052</h2>
-        <ul class="room-list">
-          <li><a href="#">Discovery 1</a></li>
-          <li><a href="#">Discovery 2</a></li>
-          <li><a href="#">Showcase</a></li>
-        </ul>
+        <for(location in data.locations)>
+          <h2 class="floor-plate">
+            <i18n-message key="choose:floorplate" name=location.name/>
+          </h2>
+          <ul class="room-list">
+            <li for(room in location.rooms)>
+              <a href="/book/${room.id}">${room.name}</a>
+            </li>
+          </ul>
+        </for>
       </div>
     </div>
 

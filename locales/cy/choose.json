@@ -1,12 +1,4 @@
 {
   "heading": "Dewiswch ystafell",
-  "form": {
-    "room": {
-      "label": "Dewiswch ystafell",
-      "errors": {
-        "presence": "Rhaid i chi ddewis ystafell"
-      }
-    },
-    "submit": "Parhau"
-  }
+  "floorplate": "{{name}} plât Llawr"
 }
