@@ -3,6 +3,7 @@
   "skipLink": "Mynd i'r prif gynnwys",
   "cookieMessage": "Rydym yn defnyddio cwcis i wneud y safle yn symlach {{-link-start}}Cael gwybod mwy am gwcis{{-link-end}}.",
   "phaseDescription": "Mae hwn yn wasanaeth newydd - eich adborth yn ein helpu i wella.",
+  "phaseDescriptionEmail": "Mae hwn yn wasanaeth newydd - eich {{-link-start}}adborth{{-link-end}} yn ein helpu i wella.",
   "footer": {
     "supportLinks": "Mae cysylltiadau Cymorth",
     "cookies": "Cookies",
