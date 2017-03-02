@@ -2,9 +2,12 @@
 <script marko-init>
   const addDays = require('date-fns/add_days');
   const subDays = require('date-fns/sub_days');
+  const isTodayOrTheFuture = require('../../utils/is-today-or-the-future');
 </script>
-<var errors=(data.errors || false) values=(data.values || false)
-  prev=subDays(data.date, 1) next=addDays(data.date, 1)/>
+<var errors=(data.errors || false)
+  values=(data.values || false)
+  prev=subDays(data.date, 1)
+  next=addDays(data.date, 1)/>
 
 <layout-use("../../common/layout.marko")>
 
@@ -48,7 +51,7 @@
           next-text=i18n('date:dayMonth', {day: next.getDate(), month: next.getMonth()})/>
       </div>
 
-      <div class="column-third">
+      <div class="column-third" if(isTodayOrTheFuture(data.date))>
         <form method="post">
           <h2 class="heading-medium">
             <i18n-message key="book:bookForm.heading" room-name="${data.room.name}"/>
