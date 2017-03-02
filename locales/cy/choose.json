@@ -1,4 +1,8 @@
 {
   "heading": "Dewiswch ystafell",
-  "floorplate": "{{name}} plât Llawr"
+  "floorplate": "{{name}} plât Llawr",
+  "roomName": "Enw'r ystafell",
+  "equipment": "Offer",
+  "sittingCapacity": "Nifer y seddi",
+  "standingCapacity": "Capasiti sefydlog"
 }

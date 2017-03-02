@@ -18,6 +18,7 @@ function getLocationsAndRooms() {
         include: {
           relation: 'rooms',
           scope: {
+            include: 'features',
             order: 'name ASC'
           }
         }
