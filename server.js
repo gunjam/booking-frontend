@@ -54,7 +54,9 @@ if (process.env.NODE_ENV === 'production') {
       console.log(`Allowed IP ${clientIp}`);
       return next();
     }
-    res.status(403).send('Go away');
+    res.status(403).send(
+      'Speak to the hub management team to get access to the room booking application.'
+    );
     console.error(`Blocked IP ${clientIp}`);
   });
 }
