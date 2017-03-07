@@ -26,6 +26,10 @@
   padding: 4px;
   position: absolute;
   width: 80%;
+
+  &:nth-child(4n) {
+    background-color: $purple;
+  }
 }
 
 .now {
