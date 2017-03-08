@@ -49,7 +49,8 @@ function getRoomWithBookings(id, date) {
                   {start: {gt: formatDate(date)}},
                   {start: {lt: formatDate(nextDay)}}
                 ]
-              }
+              },
+              order: 'start ASC'
             }
           }
         ]
