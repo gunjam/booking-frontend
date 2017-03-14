@@ -22,10 +22,12 @@ function post(req, res, next) {
   const {date, errors} = getDateAndErrors(req);
   const {description = '', name = '', fromHours = '', fromMinutes = '',
     untilHours = '', untilMinutes = ''} = req.body;
+  const dateDay = date.getDate();
+  const dateMonth = date.getMonth() + 1;
+  const dateYear = date.getFullYear();
   const values = {
-    description, name, fromHours, fromMinutes, untilHours,
-    untilMinutes, dateDay: date.getDate(), dateMonth: date.getMonth() + 1,
-    dateYear: date.getFullYear()
+    description, name, fromHours, fromMinutes, untilHours, untilMinutes,
+    dateDay, dateMonth, dateYear
   };
 
   if (description === '') {
@@ -67,7 +69,11 @@ function post(req, res, next) {
     bookRoom({start, end, description, name, roomId})
       .then(() => {
         getRoomWithBookings(roomId, date)
-          .then(response => template.render({room: response.body, date, values, booked: true}, res))
+          .then(response => {
+            const values = {dateDay, dateMonth, dateYear};
+            const booked = true;
+            template.render({room: response.body, date, values, booked}, res);
+          })
           .catch(next);
       })
       .catch(err => {
