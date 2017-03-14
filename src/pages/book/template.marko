@@ -22,6 +22,10 @@
       <i18n-message key="choose:heading"/>
     </a>
 
+    <p if(data.booked) class="error-summary booking-notification text">
+      <i18n-message key="book:roomBooked"/>
+    </p>
+
     <h1 class="heading-xlarge no-margin-bottom">
       <span class="heading-secondary">
         ${data.room.location.name}

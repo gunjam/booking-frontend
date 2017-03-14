@@ -1,6 +1,7 @@
 {
   "title": "{{room-name}} - Bookings",
   "features": "{{-strong-start}}Equipment:{{-strong-end}} {{features}}",
+  "roomBooked": "Room booked.",
   "dateForm": {
     "date": {
       "legend": "Date",

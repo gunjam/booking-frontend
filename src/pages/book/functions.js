@@ -65,7 +65,11 @@ function post(req, res, next) {
     const end = `${dateString}T${untilHours}:${untilMinutes}:00.000Z`;
 
     bookRoom({start, end, description, name, roomId})
-      .then(response => res.redirect(`/confirmation/${response.body.id}`))
+      .then(() => {
+        getRoomWithBookings(roomId, date)
+          .then(response => template.render({room: response.body, date, values, booked: true}, res))
+          .catch(next);
+      })
       .catch(err => {
         if ((err.response.body.message || '').indexOf('doubleBooking')) {
           const double = req.t('book:bookForm.from.errors.double');

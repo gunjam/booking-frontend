@@ -1,6 +1,7 @@
 {
   "title": "{{room-name}} - Archebion",
   "features": "{{-strong-start}}Offer:{{-strong-end}} {{features}}",
+  "roomBooked": "Ystafell harchebu",
   "dateForm": {
     "date": {
       "legend": "Dyddiad",
