@@ -10,8 +10,7 @@ const template = require('./template.marko');
 function get(req, res, next) {
   const {roomId} = req.params;
   const {date, errors} = getDateAndErrors(req);
-  const {dateDay, dateMonth, dateYear} = req.query;
-  const values = {dateDay, dateMonth, dateYear};
+  const values = {dateDay: date.getDate(), dateMonth: date.getMonth() + 1, dateYear: date.getFullYear()};
 
   getRoomWithBookings(roomId, date)
     .then(response => template.render({room: response.body, date, errors, values}, res))
@@ -23,9 +22,11 @@ function post(req, res, next) {
   const {date, errors} = getDateAndErrors(req);
   const {description = '', name = '', fromHours = '', fromMinutes = '',
     untilHours = '', untilMinutes = ''} = req.body;
-  const {dateDay, dateMonth, dateYear} = req.query;
-  const values = {description, name, fromHours, fromMinutes, untilHours,
-    untilMinutes, dateDay, dateMonth, dateYear};
+  const values = {
+    description, name, fromHours, fromMinutes, untilHours,
+    untilMinutes, dateDay: date.getDate(), dateMonth: date.getMonth() + 1,
+    dateYear: date.getFullYear()
+  };
 
   if (description === '') {
     errors.description = req.t('book:bookForm.description.errors.presence');
