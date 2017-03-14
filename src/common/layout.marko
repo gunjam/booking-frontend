@@ -47,7 +47,7 @@
     <main id="content" role="main" class="group" data-journey=data.journey>
       <language-switcher>
         <i18n-message if(feedbackEmail) key="app:phaseDescriptionEmail"
-          link-start="<a href=\"mailto:${feedbackEmail}\">" link-end="</a>"/>
+          link-start="<a href=\"mailto:${feedbackEmail}?subject='Book a room' feedback\">" link-end="</a>"/>
         <i18n-message else key="app:phaseDescription"/>
       </language-switcher>
       <layout-placeholder name="content"/>
