@@ -1,16 +1,9 @@
 @import 'colours';
 @import 'css3';
 
-.available-languages {
-  @include box-sizing(border-box);
-
-  padding: 0 15px;
-}
-
 .translation-list {
-  border-bottom: 1px solid $border-colour;
   list-style: none;
-  padding: 15px 0 10px;
+  margin-top: .5em;
 
   ::after {
     clear: both;
@@ -43,9 +36,9 @@
 }
 
 @media(min-width:641px) {
-  .available-languages {
+  .translation-list {
     float: right;
-    width: 33.33333%;
+    margin-top: -1.1em;
   }
 
   .translation a,

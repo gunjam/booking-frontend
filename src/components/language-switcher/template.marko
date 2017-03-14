@@ -1,30 +1,36 @@
-<div class="grid-row">
-  <div class="available-languages">
-    <ul class="translation-list">
-      <if(data.language === "cy")>
-        <li class="translation">
-          <a hreflang="en" href="${data.urlWithLangQry}en" lang="en"
-            data-journey-click="find-pension-contact-details:link:to-english">
-            <span class="visuallyhidden">Switch to</span> English
-          </a>
-        </li>
-        <li class="translation last">
-          <span class="visuallyhidden">Iaith bresennol: </span>
-          <span>cyfieithu Gwael Cymraeg</span>
-        </li>
-      </if>
-      <else>
-        <li class="translation">
-          <span class="visuallyhidden">Current language: </span>
-          <span>English</span>
-        </li>
-        <li class="translation last">
-          <a hreflang="cy" href="${data.urlWithLangQry}cy" lang="cy"
-            data-journey-click="find-pension-contact-details:link:to-welsh">
-            <span class="visuallyhidden">Newid i’r</span> cyfieithu Gwael Cymraeg
-          </a>
-        </li>
-      </else>
-    </ul>
-  </div>
+<div class="phase-banner-beta">
+  <p>
+    <strong class="phase-tag">
+      BETA
+    </strong>
+    <span if(data.renderBody)>
+      <invoke data.renderBody(out)/>
+    </span>
+  </p>
+  <ul class="translation-list">
+    <if(data.language === "cy")>
+      <li class="translation">
+        <a hreflang="en" href="${data.urlWithLangQry}en" lang="en"
+          data-journey-click="find-pension-contact-details:link:to-english">
+          <span class="visuallyhidden">Switch to</span> English
+        </a>
+      </li>
+      <li class="translation last">
+        <span class="visuallyhidden">Iaith bresennol: </span>
+        <span>cyfieithu Gwael Cymraeg</span>
+      </li>
+    </if>
+    <else>
+      <li class="translation">
+        <span class="visuallyhidden">Current language: </span>
+        <span>English</span>
+      </li>
+      <li class="translation last">
+        <a hreflang="cy" href="${data.urlWithLangQry}cy" lang="cy"
+          data-journey-click="find-pension-contact-details:link:to-welsh">
+          <span class="visuallyhidden">Newid i’r</span> cyfieithu Gwael Cymraeg
+        </a>
+      </li>
+    </else>
+  </ul>
 </div>
