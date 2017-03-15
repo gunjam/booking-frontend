@@ -1,6 +1,6 @@
 'use strict';
 
-const {getRoomWithBookings, bookRoom} = require('../../lib/booking-api');
+const {getRoomWithBookings, deleteBooking, bookRoom} = require('../../lib/booking-api');
 const {validHours, validMinutes} = require('../../utils/consts');
 const formatDate = require('../../utils/format-date');
 const getDateAndErrors = require('../../lib/get-date-and-errors');
@@ -21,7 +21,7 @@ function post(req, res, next) {
   const {roomId} = req.params;
   const {date, errors} = getDateAndErrors(req);
   const {description = '', name = '', fromHours = '', fromMinutes = '',
-    untilHours = '', untilMinutes = ''} = req.body;
+    untilHours = '', untilMinutes = '', unbook = false} = req.body;
   const dateDay = date.getDate();
   const dateMonth = date.getMonth() + 1;
   const dateYear = date.getFullYear();
@@ -29,6 +29,23 @@ function post(req, res, next) {
     description, name, fromHours, fromMinutes, untilHours, untilMinutes,
     dateDay, dateMonth, dateYear
   };
+
+  if (unbook) {
+    const {bookingId} = req.body;
+    const unbooked = true;
+
+    if (!bookingId || Object.keys(errors).length > 0) {
+      const err = new Error('unbook a book failure');
+      return next(err);
+    }
+
+    return deleteBooking(bookingId)
+      .then(() =>
+        getRoomWithBookings(roomId, date)
+          .then(r => template.render({room: r.body, date, values, unbooked}, res))
+      )
+      .catch(next);
+  }
 
   if (description === '') {
     errors.description = req.t('book:bookForm.description.errors.presence');
@@ -67,12 +84,13 @@ function post(req, res, next) {
     const end = `${dateString}T${untilHours}:${untilMinutes}:00.000Z`;
 
     bookRoom({start, end, description, name, roomId})
-      .then(() => {
+      .then(response => {
+        const bookingId = response.body.id;
+
         getRoomWithBookings(roomId, date)
           .then(response => {
             const values = {dateDay, dateMonth, dateYear};
-            const booked = true;
-            template.render({room: response.body, date, values, booked}, res);
+            template.render({room: response.body, date, values, bookingId}, res);
           })
           .catch(next);
       })

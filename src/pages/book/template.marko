@@ -22,9 +22,16 @@
       <i18n-message key="choose:heading"/>
     </a>
 
-    <p if(data.booked) class="error-summary booking-notification text">
-      <i18n-message key="book:roomBooked"/>
-    </p>
+    <notify-success if(data.bookingId) message=i18n('book:roomBooked')>
+      <form method="post">
+        <input type="hidden" name="unbook" value="true"/>
+        <input type="hidden" name="bookingId" value=data.bookingId/>
+        <button class="button" type="submit">
+          <i18n-message key="book:undo"/>
+        </button>
+      </form>
+    </notify-success>
+    <notify-success else-if(data.unbooked) message=i18n('book:roomUnbooked')/>
 
     <h1 class="heading-xlarge no-margin-bottom">
       <span class="heading-secondary">

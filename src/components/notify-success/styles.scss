@@ -1,0 +1,18 @@
+@import 'colours';
+
+.notify-success {
+  border: 5px solid $button-colour;
+  padding: 1em;
+
+  .button {
+    float: right;
+    margin-top: -1.7em;
+    width: auto;
+  }
+}
+
+.notify-success-message {
+  color: $button-colour;
+  font-weight: 700;
+  margin: 0;
+}
