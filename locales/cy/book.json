@@ -1,7 +1,7 @@
 {
   "title": "{{room-name}} - Archebion",
   "features": "{{-strong-start}}Offer:{{-strong-end}} {{features}}",
-  "roomBooked": "Ystafell harchebu",
+  "roomBooked": "Ystafell harchebu.",
   "roomUnbooked": "Tynnu archebu lle.",
   "undo": "Dadwneud",
   "dateForm": {
