@@ -2,6 +2,8 @@
   "title": "{{room-name}} - Bookings",
   "features": "{{-strong-start}}Equipment:{{-strong-end}} {{features}}",
   "roomBooked": "Room booked.",
+  "roomUnbooked": "Booking removed.",
+  "undo": "Undo",
   "dateForm": {
     "date": {
       "legend": "Date",

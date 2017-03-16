@@ -8,6 +8,7 @@
     "./application.scss",
     "./application.js",
     "../components/language-switcher",
+    "../components/notify-success",
     "../components/calendar-view",
     "../components/time-select",
     "../components/pagination"

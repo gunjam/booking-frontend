@@ -10,6 +10,10 @@ function getBooking(id) {
   return got(`${apiUrl}/Bookings/${id}`, {json: true, query: {'filter[include]': 'room'}});
 }
 
+function deleteBooking(id) {
+  return got.delete(`${apiUrl}/Bookings/${id}`);
+}
+
 function getLocationsAndRooms() {
   return got(`${apiUrl}/Locations`, {
     json: true,
@@ -59,4 +63,6 @@ function getRoomWithBookings(id, date) {
   });
 }
 
-module.exports = {getBooking, getLocationsAndRooms, getRoomWithBookings, bookRoom};
+module.exports = {
+  getBooking, deleteBooking, getLocationsAndRooms, getRoomWithBookings, bookRoom
+};
