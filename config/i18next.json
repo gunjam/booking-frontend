@@ -21,6 +21,7 @@
     "date",
     "calendar",
     "cancel",
+    "cancelled",
     "error"
   ],
   "whitelist": [

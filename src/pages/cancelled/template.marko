@@ -1,0 +1,21 @@
+<layout-use("../../common/layout.marko")>
+
+  <layout-put into="page-title">
+    <i18n-message key="cancelled:heading"/> - <i18n-message key="app:serviceName"/>
+  </layout-put>
+
+  <layout-put into="content">
+
+    <a href="/choose-a-room" class="link-back">
+      <i18n-message key="choose:heading"/>
+    </a>
+
+    <div class="govuk-box-highlight text">
+      <h1 class="bold-large">
+        <i18n-message key="cancelled:heading"/>
+      </h1>
+    </div>
+
+  </layout-put>
+
+</layout-use>
