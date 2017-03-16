@@ -1,0 +1,17 @@
+{
+  "subject": "Booked: {{roomName}}, {{bookingDate}}, {{time}}",
+  "body": [
+    "Hi {{name}},",
+    "",
+    "Here is confirmation of your room booking:",
+    "",
+    "Room: {{roomName}}",
+    "Description: {{description}}",
+    "Date: {{bookingDate}}",
+    "Time: {{time}}",
+    "",
+    "If your plans change, and you no longer need this room, please click the following link to remove your booking so that other people may use the room at this time.",
+    "",
+    "{{-url}}"
+  ]
+}

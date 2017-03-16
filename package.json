@@ -26,7 +26,8 @@
     "lasso-sass": "^1.1.9",
     "marko": "^3.14.2",
     "marko-i18next": "^0.2.0",
-    "nodemailer": "^3.1.7"
+    "nodemailer": "^3.1.7",
+    "validator": "^7.0.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",

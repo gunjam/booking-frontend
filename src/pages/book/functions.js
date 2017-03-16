@@ -1,8 +1,11 @@
 'use strict';
 
+const isEmail = require('validator/lib/isEmail');
 const {getRoomWithBookings, deleteBooking, bookRoom} = require('../../lib/booking-api');
+const sendMail = require('../../lib/send-mail');
 const {validHours, validMinutes} = require('../../utils/consts');
 const formatDate = require('../../utils/format-date');
+const formatTime = require('../../utils/format-time');
 const getDateAndErrors = require('../../lib/get-date-and-errors');
 const isNotAny = require('../../utils/is-not-any');
 const template = require('./template.marko');
@@ -21,12 +24,12 @@ function post(req, res, next) {
   const {roomId} = req.params;
   const {date, errors} = getDateAndErrors(req);
   const {description = '', name = '', fromHours = '', fromMinutes = '',
-    untilHours = '', untilMinutes = '', unbook = false} = req.body;
+    untilHours = '', untilMinutes = '', email = '', unbook = false} = req.body;
   const dateDay = date.getDate();
   const dateMonth = date.getMonth() + 1;
   const dateYear = date.getFullYear();
   const values = {
-    description, name, fromHours, fromMinutes, untilHours, untilMinutes,
+    description, name, email, fromHours, fromMinutes, untilHours, untilMinutes,
     dateDay, dateMonth, dateYear
   };
 
@@ -40,18 +43,23 @@ function post(req, res, next) {
     }
 
     return deleteBooking(bookingId)
-      .then(() =>
-        getRoomWithBookings(roomId, date)
-          .then(r => template.render({room: r.body, date, values, unbooked}, res))
-      )
+      .then(() => getRoomWithBookings(roomId, date))
+      .then(r => template.render({room: r.body, date, values, unbooked}, res))
       .catch(next);
   }
 
   if (description === '') {
     errors.description = req.t('book:bookForm.description.errors.presence');
   }
+
   if (name === '') {
-    errors.name = 'Need a name';
+    errors.name = req.t('book:bookForm.name.errors.presence');
+  }
+
+  if (email === '') {
+    errors.email = req.t('book:bookForm.email.errors.presence');
+  } else if (!isEmail(email)) {
+    errors.email = req.t('book:bookForm.email.errors.format');
   }
 
   if (isNotAny(fromHours, validHours)) {
@@ -84,18 +92,31 @@ function post(req, res, next) {
     const end = `${dateString}T${untilHours}:${untilMinutes}:00.000Z`;
 
     bookRoom({start, end, description, name, roomId})
-      .then(response => {
-        const bookingId = response.body.id;
+      .then(response => Promise.all([response, getRoomWithBookings(roomId, date)]))
+      .then(([bookingResponse, roomResponse]) => {
+        const booking = bookingResponse.body;
+        const bookingId = booking.id;
+        const room = roomResponse.body;
 
-        getRoomWithBookings(roomId, date)
-          .then(response => {
-            const values = {dateDay, dateMonth, dateYear};
-            template.render({room: response.body, date, values, bookingId}, res);
-          })
-          .catch(next);
+        template.render({
+          room, date, values: {dateDay, dateMonth, dateYear}, bookingId
+        }, res);
+
+        const roomName = room.name;
+        const start = new Date(booking.start);
+        const end = new Date(booking.end);
+        const bookingDate = req.t('date:dayMonth', {day: start.getDate(), month: start.getMonth()});
+        const time = `${formatTime(start)} - ${formatTime(end)}`;
+        const url = `${req.protocol}://${req.get('host')}/cancel/${bookingId}`;
+
+        return sendMail({
+          to: email,
+          subject: req.t('email:subject', {roomName, bookingDate, time}),
+          text: req.t('email:body', {name, description, roomName, bookingDate, time, url})
+        });
       })
       .catch(err => {
-        if ((err.response.body.message || '').indexOf('doubleBooking')) {
+        if (err.response && (err.response.body.message || '').indexOf('doubleBooking')) {
           const double = req.t('book:bookForm.from.errors.double');
           const errors = {from: double, until: double};
 
