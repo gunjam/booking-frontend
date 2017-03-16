@@ -8,7 +8,12 @@ function get(req, res, next) {
 
   getBooking(bookingId)
     .then(response => template.render(response.body, res))
-    .catch(next);
+    .catch(err => {
+      if (err.statusCode === 404) {
+        return template.render({alreadyCancelled: true}, res);
+      }
+      next(err);
+    });
 }
 
 function post(req, res, next) {

@@ -10,29 +10,38 @@
   </layout-put>
 
   <layout-put into="content">
-    <h1 class="heading-xlarge">
-      <i18n-message key="cancel:heading"/>
-    </h1>
+    <if(data.alreadyCancelled)>
+      <h1 class="heading-xlarge">
+        <i18n-message key="cancel:alreadyCancelled.heading"/>
+      </h1>
+      <p class="lede">
+        <i18n-message key="cancel:alreadyCancelled.body"/>
+      </p>
+    </if>
+    <else>
+      <h1 class="heading-xlarge">
+        <i18n-message key="cancel:heading"/>
+      </h1>
 
-    <var start=(new Date(data.start))/>
-    <var end=(new Date(data.end))/>
-    <var dateObj={day: start.getDate(), month: start.getMonth(), year: start.getFullYear()}/>
+      <var start=(new Date(data.start))/>
+      <var end=(new Date(data.end))/>
+      <var dateObj={day: start.getDate(), month: start.getMonth(), year: start.getFullYear()}/>
 
-    <summary>
-      <summary:item key=i18n('cancel:room') value=data.room.name/>
-      <summary:item key=i18n('cancel:description') value=data.description/>
-      <summary:item key=i18n('cancel:name') value=data.name/>
-      <summary:item key=i18n('cancel:date') value=i18n('date:dayMonthYear', dateObj)/>
-      <summary:item key=i18n('cancel:time') value="${formatTime(start)} - ${formatTime(end)}"/>
-    </summary>
+      <summary>
+        <summary:item key=i18n('cancel:room') value=data.room.name/>
+        <summary:item key=i18n('cancel:description') value=data.description/>
+        <summary:item key=i18n('cancel:name') value=data.name/>
+        <summary:item key=i18n('cancel:date') value=i18n('date:dayMonthYear', dateObj)/>
+        <summary:item key=i18n('cancel:time') value="${formatTime(start)} - ${formatTime(end)}"/>
+      </summary>
 
-    <form method="post">
-      <input type="hidden" name="bookingId" value=data.id/>
-      <button type="submit" class="button">
-        <i18n-message key="cancel:submit"/>
-      </button>
-    </form>
-
+      <form method="post">
+        <input type="hidden" name="bookingId" value=data.id/>
+        <button type="submit" class="button">
+          <i18n-message key="cancel:submit"/>
+        </button>
+      </form>
+    </else>
   </layout-put>
 
 </layout-use>

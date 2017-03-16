@@ -5,5 +5,9 @@
   "name": "Enw",
   "date": "Dyddiad",
   "time": "Amser",
-  "submit": "Dileu archebu"
+  "submit": "Dileu archebu",
+  "alreadyCancelled": {
+    "heading": "Ni ellir archebu lle i'w gweld",
+    "body": "Mae'r archeb efallai eisoes wedi cael eu canslo."
+  }
 }
