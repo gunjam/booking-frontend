@@ -1,6 +1,6 @@
 'use strict';
 
-const {getBooking} = require('../../lib/booking-api');
+const {getBooking, deleteBooking} = require('../../lib/booking-api');
 const template = require('./template.marko');
 
 function get(req, res, next) {
@@ -11,4 +11,12 @@ function get(req, res, next) {
     .catch(next);
 }
 
-module.exports = {get};
+function post(req, res, next) {
+  const {bookingId} = req.params;
+
+  deleteBooking(bookingId)
+    .then(() => res.redirect('/cancelled'))
+    .catch(next);
+}
+
+module.exports = {get, post};
