@@ -1,0 +1,9 @@
+{
+  "heading": "Booking details",
+  "room": "Room",
+  "description": "Description",
+  "name": "Name",
+  "date": "Date",
+  "time": "Time",
+  "submit": "Delete booking"
+}

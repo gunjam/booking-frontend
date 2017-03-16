@@ -1,0 +1,25 @@
+@import 'colours';
+@import 'css3';
+@import 'shims';
+
+.data-summary {
+  @extend %contain-floats;
+
+  border-bottom: 1px solid $border-colour;
+  margin-bottom: 2em;
+  max-width: 30em;
+}
+
+.data-summary-key,
+.data-summary-value {
+  @include box-sizing(border-box);
+
+  border-top: 1px solid $border-colour;
+  float: left;
+  padding: .63158em 1.05263em .47368em 0;
+  width: 50%;
+}
+
+.data-summary-key {
+  clear: left;
+}

@@ -74,6 +74,7 @@ app.use((req, res, next) => {
 
 // Page routes
 app.use('/choose-a-room', require('./src/pages/choose'));
+app.use('/cancel', require('./src/pages/cancel'));
 app.use('/book', require('./src/pages/book'));
 
 // Redirect root to start page

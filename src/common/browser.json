@@ -11,6 +11,7 @@
     "../components/notify-success",
     "../components/calendar-view",
     "../components/time-select",
-    "../components/pagination"
+    "../components/pagination",
+    "../components/summary"
   ]
 }
