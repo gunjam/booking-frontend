@@ -109,11 +109,12 @@ function post(req, res, next) {
         const time = `${formatTime(start)} - ${formatTime(end)}`;
         const url = `${req.protocol}://${req.get('host')}/cancel/${bookingId}`;
 
-        return sendMail({
+        sendMail({
           to: email,
           subject: req.t('email:subject', {roomName, bookingDate, time}),
           text: req.t('email:body', {name, description, roomName, bookingDate, time, url})
-        });
+        })
+        .catch(err => console.error(err));
       })
       .catch(err => {
         if (err.response && (err.response.body.message || '').indexOf('doubleBooking')) {
