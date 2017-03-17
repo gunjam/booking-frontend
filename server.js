@@ -34,8 +34,10 @@ app.get('/ping', (req, res) => {
   res.status(200).send('pong');
 });
 
-// Serve static assets
-app.use(require('lasso/middleware').serveStatic());
+// Serve static assets, max-age of 1 year
+app.use(require('lasso/middleware').serveStatic({
+  sendOptions: {maxage: 31536000}
+}));
 
 // Ip Filter
 if (process.env.NODE_ENV === 'production') {
