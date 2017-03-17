@@ -28,6 +28,13 @@
         "presence": "Need a name"
       }
     },
+    "email": {
+      "label": "Email address",
+      "errors": {
+        "presence": "Need an email address",
+        "format": "Email address isn't valid"
+      }
+    },
     "from": {
       "legend": "From",
       "errors": {

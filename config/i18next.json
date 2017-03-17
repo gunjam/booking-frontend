@@ -19,9 +19,13 @@
     "choose",
     "book",
     "date",
+    "email",
     "calendar",
+    "cancel",
+    "cancelled",
     "error"
   ],
+  "joinArrays": "\n",
   "whitelist": [
     "en",
     "cy"

@@ -1,0 +1,13 @@
+{
+  "heading": "Booking details",
+  "room": "Room",
+  "description": "Description",
+  "name": "Name",
+  "date": "Date",
+  "time": "Time",
+  "submit": "Delete booking",
+  "alreadyCancelled": {
+    "heading": "Booking can't be found",
+    "body": "This booking may have already been cancelled."
+  }
+}
