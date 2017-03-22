@@ -1,5 +1,5 @@
 {
-  "title": "{{room-name}} - Bookings",
+  "title": "{{floor-plate}} {{room-name}} - Bookings",
   "features": "{{-strong-start}}Equipment:{{-strong-end}} {{features}}",
   "roomBooked": "Room booked.",
   "roomUnbooked": "Booking removed.",
