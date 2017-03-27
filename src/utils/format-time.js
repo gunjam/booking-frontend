@@ -1,5 +1,5 @@
 'use strict';
 
 module.exports = function (date) {
-  return date.toISOString().substr(11, 5);
+  return date.toTimeString().substr(0, 5);
 };
