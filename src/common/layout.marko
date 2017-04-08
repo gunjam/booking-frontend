@@ -1,36 +1,23 @@
-<i18n-var/>
-<script marko-init>
-  const feedbackEmail = process.env.FEEDBACK_EMAIL;
-</script>
-<layout-use('govuk-template-marko/template.marko')
+static const feedbackEmail = process.env.FEEDBACK_EMAIL;
+
+$ const i18n = out.stream.req.t;
+
+<include('govuk-template-marko/template.marko')
+  page-title=(input.pageTitle || i18n('app:serviceName'))
+  skip-link-message=i18n('app:skipLink')
   header-class="with-proposition"
   logo-link-title=i18n('app:logoLinkTitle')
-  html-lang="${data.lang || out.stream.req.language || 'en'}"
+  html-lang="${input.lang || out.stream.req.language || 'en'}"
   homepage-url="/"
-  package-path=(require.resolve('./browser.json'))>
-
-  <!-- Page Title -->
-  <layout-put into="page-title">
-    <layout-placeholder name="page-title"/>
-  </layout-put>
+  package-path=require.resolve('./browser.json')>
 
   <!-- GOV.UK header link text -->
-  <layout-put into="global-header-text">
+  <@global-header-text>
     <abbr title="The Department of Work and Pensions">DWP</abbr>
-  </layout-put>
-
-  <!-- End of GOV.UK <head/> tag -->
-  <layout-put into="head">
-    <lasso-head/>
-  </layout-put>
-
-  <!-- Skip link content -->
-  <layout-put into="skip-link-message">
-    <i18n-message key="app:skipLink"/>
-  </layout-put>
+  </@global-header-text>
 
   <!-- Black header section of GOV.UK template -->
-  <layout-put into="proposition-header">
+  <@proposition-header>
     <div class="header-proposition">
       <div class="content">
         <div id="proposition-menu">
@@ -40,23 +27,27 @@
         </div>
       </div>
     </div>
-  </layout-put>
+  </@proposition-header>
 
   <!-- Main body content -->
-  <layout-put into="content">
+  <@content>
     <main id="content" role="main" class="group" data-journey=data.journey>
       <language-switcher>
-        <i18n-message if(feedbackEmail) key="app:phaseDescriptionEmail"
-          link-start="<a href=\"mailto:${feedbackEmail}?subject='Book a room' feedback\">" link-end="</a>"/>
-        <i18n-message else key="app:phaseDescription"/>
+        <if(feedbackEmail)>
+          <i18n-message key="app:phaseDescriptionEmail"
+            link-start="<a href=\"mailto:${feedbackEmail}?subject=Book a room feedback\">"
+            link-end="</a>"/>
+        </if>
+        <else>
+          <i18n-message key="app:phaseDescription"/>
+        </else>
       </language-switcher>
-      <layout-placeholder name="content"/>
+      <include(input.content)/>
     </main>
-  </layout-put>
+  </@content>
 
   <!-- End of GOV.UK tempalte <body/> tag -->
-  <layout-put into="body-end">
-    <lasso-body/>
+  <@body-end>
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -66,34 +57,34 @@
       ga('create', 'UA-57523228-47', 'auto');
       ga('send', 'pageview');
     </script>
-  </layout-put>
+  </@body-end>
 
   <!-- Grey footer links section of GOV.UK template -->
-  <layout-put into="footer-support-links">
+  <@footer-support-links>
     <h2 class="visuallyhidden">
       <i18n-message key="app:footer.supportLinks"/>
     </h2>
     <ul>
       <li>
         <i18n-message key="app:footer.madeInNewcastle"
-          link-start="<a href='https://dwpdigital.blog.gov.uk/'>"
+          link-start="<a href=\"https://dwpdigital.blog.gov.uk\">"
           link-end="</a>"/>
       </li>
     </ul>
-  </layout-put>
+  </@footer-support-links>
 
   <!-- OGL licence of footer in GOV.UK template -->
-  <layout-put into="licence-message">
+  <@licence-message>
     <p>
       <i18n-message key="app:footer.availableUnderOgl"
-        link-start="<a href='https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/' rel='license'>"
+        link-start="<a href=\"https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/\" rel=\"license\">"
         link-end="</a>"/>
     </p>
-  </layout-put>
+  </@licence-message>
 
   <!-- Copyright content in GOV.UK template footer -->
-  <layout-put into="crown-copyright-message">
+  <@crown-copyright-message>
     © <i18n-message key="app:footer.copyright"/>
-  </layout-put>
+  </@crown-copyright-message>
 
-</layout-use>
+</include>

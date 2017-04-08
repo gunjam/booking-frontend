@@ -1,34 +1,38 @@
-<div class="phase-banner-beta">
+$ {
+  const {originalUrl, language} = out.stream.req;
+  const urlWithoutLang = originalUrl.indexOf('lng=') > -1 ? originalUrl.slice(0, -7) : originalUrl;
+  const urlWithLangQry = urlWithoutLang.indexOf('?') > -1 ? urlWithoutLang + '&lng=' : '?lng=';
+}
+
+<div.phase-banner-beta>
   <p>
-    <strong class="phase-tag">
-      BETA
+    <strong.phase-tag>
+      Beta
     </strong>
     <span if(data.renderBody)>
-      <invoke data.renderBody(out)/>
+      <include(input.renderBody)/>
     </span>
   </p>
-  <ul class="translation-list">
-    <if(data.language === "cy")>
-      <li class="translation">
-        <a hreflang="en" href="${data.urlWithLangQry}en" lang="en"
-          data-journey-click="find-pension-contact-details:link:to-english">
-          <span class="visuallyhidden">Switch to</span> English
+  <ul.translation-list>
+    <if(language === 'cy')>
+      <li.translation>
+        <a hreflang="en" href="${urlWithLangQry}en" lang="en">
+          <span.visuallyhidden>Switch to</span> English
         </a>
       </li>
-      <li class="translation last">
-        <span class="visuallyhidden">Iaith bresennol: </span>
+      <li.translation.last>
+        <span.visuallyhidden>Iaith bresennol: </span>
         <span>cyfieithu Gwael Cymraeg</span>
       </li>
     </if>
     <else>
-      <li class="translation">
-        <span class="visuallyhidden">Current language: </span>
+      <li.translation>
+        <span.visuallyhidden>Current language: </span>
         <span>English</span>
       </li>
-      <li class="translation last">
-        <a hreflang="cy" href="${data.urlWithLangQry}cy" lang="cy"
-          data-journey-click="find-pension-contact-details:link:to-welsh">
-          <span class="visuallyhidden">Newid i’r</span> cyfieithu Gwael Cymraeg
+      <li.translation.last>
+        <a hreflang="cy" href="${urlWithLangQry}cy" lang="cy">
+          <span.visuallyhidden>Newid i’r</span> cyfieithu Gwael Cymraeg
         </a>
       </li>
     </else>

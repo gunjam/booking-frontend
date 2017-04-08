@@ -1,25 +1,22 @@
-<i18n-var/>
-<script marko-init>
-  const addDays = require('date-fns/add_days');
-  const subDays = require('date-fns/sub_days');
-  const isTodayOrTheFuture = require('../../utils/is-today-or-the-future');
-</script>
-<var errors=(data.errors || false)
-  values=(data.values || false)
-  prev=subDays(data.date, 1)
-  next=addDays(data.date, 1)/>
+import {addDays, subDays, differenceInDays} from 'date-fns';
 
-<layout-use("../../common/layout.marko")>
+static function isTodayOrTheFuture(date) {
+  return differenceInDays(date, new Date()) >= 0;
+}
 
-  <layout-put into="page-title">
-    <i18n-message key="book:title" floor-plate="${data.room.location.name}"
-      room-name="${data.room.name}"/> -
-    <i18n-message key="app:serviceName"/>
-  </layout-put>
+$ {
+  const i18n = out.stream.req.t;
+  const errors = data.errors || false;
+  const values = data.values || false;
+  const prev = subDays(data.date, 1);
+  const next = addDays(data.date, 1);
+  const pageTitle = i18n('book:title', {'floor-plate': data.room.location.name, 'room-name': data.room.name}) + '-' + i18n('app:serviceName');
+}
 
-  <layout-put into="content">
+<include("../../common/layout.marko") page-title=pageTitle>
 
-    <a href="/choose-a-room" class="link-back">
+  <@content>
+    <a.link-back href="/choose-a-room">
       <i18n-message key="choose:heading"/>
     </a>
 
@@ -27,15 +24,15 @@
       <form method="post">
         <input type="hidden" name="unbook" value="true"/>
         <input type="hidden" name="bookingId" value=data.bookingId/>
-        <button class="button" type="submit">
+        <button.button type="submit">
           <i18n-message key="book:undo"/>
         </button>
       </form>
     </notify-success>
     <notify-success else-if(data.unbooked) message=i18n('book:roomUnbooked')/>
 
-    <h1 class="heading-xlarge no-margin-bottom">
-      <span class="heading-secondary">
+    <h1.heading-xlarge.no-margin-bottom>
+      <span.heading-secondary>
         ${data.room.location.name}
       </span>
       ${data.room.name}
@@ -46,15 +43,15 @@
         strong-end="</strong>" features=data.room.features.map(e => e.description).join(', ')/>
     </p>
 
-    <div class="grid-row">
-      <div class="column-two-thirds">
-        <form class="change-date">
+    <div.grid-row>
+      <div.column-two-thirds>
+        <form.change-date>
           <gov-date-input name="date" legend=i18n('book:dateForm.date.legend')
             value-day=values.dateDay value-month=values.dateMonth
             value-year=values.dateYear maxyear="9999"
             error=errors.date suffix="camel"/>
 
-          <button type="submit" class="button">
+          <button.button type="submit">
             <i18n-message key="book:dateForm.submit"/>
           </button>
         </form>
@@ -69,14 +66,12 @@
 
       <div class="column-third" if(isTodayOrTheFuture(data.date))>
         <form method="post">
-          <h2 class="heading-medium">
-            <i18n-message key="book:bookForm.heading" room-name="${data.room.name}"/>
+          <h2.heading-medium>
+            <i18n-message key="book:bookForm.heading" room-name=data.room.name/>
           </h2>
-          <p class="lede">
-            <i18n-message key="date:dayMonthYear"
-              day=data.date.getDate()
-              month=data.date.getMonth()
-              year=data.date.getFullYear()/>
+          <p.lede>
+            <i18n-message key="date:dayMonthYear" day=data.date.getDate()
+              month=data.date.getMonth() year=data.date.getFullYear()/>
           </p>
 
           <gov-input name="description" label=i18n('book:bookForm.description.label')
@@ -91,13 +86,12 @@
           <time-select legend=i18n('book:bookForm.until.legend') name="until"
             error=errors.until value-hours=values.untilHours value-minutes=values.untilMinutes/>
 
-          <button type="submit" class="button">
+          <button.button type="submit">
             <i18n-message key="book:bookForm.submit"/>
           </button>
         </form>
       </div>
     </div>
+  </@content>
 
-  </layout-put>
-
-</layout-use>
+</include>
