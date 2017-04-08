@@ -6,7 +6,6 @@ const sendMail = require('../../lib/send-mail');
 const {validHours, validMinutes} = require('../../utils/consts');
 const formatDate = require('../../utils/format-date');
 const formatTime = require('../../utils/format-time');
-const parseDateIgnoreTimzone = require('../../utils/parse-date-ignore-timezone');
 const getDateAndErrors = require('../../lib/get-date-and-errors');
 const isNotAny = require('../../utils/is-not-any');
 const template = require('./template.marko');
@@ -104,8 +103,8 @@ function post(req, res, next) {
         }, res);
 
         const roomName = room.name;
-        const start = parseDateIgnoreTimzone(booking.start);
-        const end = parseDateIgnoreTimzone(booking.end);
+        const start = new Date(booking.start);
+        const end = new Date(booking.end);
         const bookingDate = req.t('date:dayMonth', {day: start.getDate(), month: start.getMonth()});
         const time = `${formatTime(start)} - ${formatTime(end)}`;
         const url = `${req.protocol}://${req.get('host')}/cancel/${bookingId}`;
