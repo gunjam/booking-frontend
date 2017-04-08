@@ -4,8 +4,8 @@ const isEmail = require('validator/lib/isEmail');
 const {getRoomWithBookings, deleteBooking, bookRoom} = require('../../lib/booking-api');
 const sendMail = require('../../lib/send-mail');
 const {validHours, validMinutes} = require('../../utils/consts');
-const formatDate = require('../../utils/format-date');
 const formatTime = require('../../utils/format-time');
+const formatBookingDateTime = require('../../utils/format-booking-date-time');
 const getDateAndErrors = require('../../lib/get-date-and-errors');
 const isNotAny = require('../../utils/is-not-any');
 const template = require('./template.marko');
@@ -87,9 +87,8 @@ function post(req, res, next) {
       .then(response => template.render({room: response.body, date, errors, values}, res))
       .catch(next);
   } else {
-    const dateString = formatDate(date);
-    const start = `${dateString}T${fromHours}:${fromMinutes}:00.000Z`;
-    const end = `${dateString}T${untilHours}:${untilMinutes}:00.000Z`;
+    const start = formatBookingDateTime(date, fromHours, fromMinutes);
+    const end = formatBookingDateTime(date, untilHours, untilMinutes);
 
     bookRoom({start, end, description, name, roomId})
       .then(response => Promise.all([response, getRoomWithBookings(roomId, date)]))
