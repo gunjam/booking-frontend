@@ -6,9 +6,7 @@ $ const i18n = out.stream.req.t;
   page-title=(input.pageTitle || i18n('app:serviceName'))
   skip-link-message=i18n('app:skipLink')
   header-class="with-proposition"
-  logo-link-title=i18n('app:logoLinkTitle')
   html-lang="${input.lang || out.stream.req.language || 'en'}"
-  homepage-url="/"
   package-path=require.resolve('./browser.json')>
 
   <!-- GOV.UK header link text -->
