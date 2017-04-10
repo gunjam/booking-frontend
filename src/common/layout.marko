@@ -33,14 +33,10 @@ $ const i18n = out.stream.req.t;
   <@content>
     <main id="content" role="main" class="group" data-journey=data.journey>
       <language-switcher>
-        <if(feedbackEmail)>
-          <i18n-message key="app:phaseDescriptionEmail"
-            link-start="<a href=\"mailto:${feedbackEmail}?subject=Book a room feedback\">"
-            link-end="</a>"/>
-        </if>
-        <else>
-          <i18n-message key="app:phaseDescription"/>
-        </else>
+        <i18n-message if(feedbackEmail) key="app:phaseDescriptionEmail"
+          link-start="<a href=\"mailto:${feedbackEmail}?subject=Book a room feedback\">"
+          link-end="</a>"/>
+        <i18n-message else key="app:phaseDescription"/>
       </language-switcher>
       <include(input.content)/>
     </main>
