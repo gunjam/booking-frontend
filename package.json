@@ -6,7 +6,7 @@
     "node": ">6.0.0"
   },
   "scripts": {
-    "test": "xo && mocha src/test"
+    "test": "xo"
   },
   "dependencies": {
     "body-parser": "^1.17.1",
@@ -30,17 +30,12 @@
     "validator": "^7.0.0"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
-    "cheerio": "^0.22.0",
-    "mocha": "^3.2.0",
     "xo": "^0.18.1"
   },
   "xo": {
     "space": true,
-    "esnext": true,
     "env": [
       "node",
-      "mocha",
       "browser",
       "jquery"
     ],
