@@ -35,6 +35,7 @@ function post(req, res, next) {
 
   if (unbook) {
     const {bookingId} = req.body;
+    const gaPage = req.originalUrl + '/booking-canceled';
     const unbooked = true;
 
     if (!bookingId || Object.keys(errors).length > 0) {
@@ -44,7 +45,7 @@ function post(req, res, next) {
 
     return deleteBooking(bookingId)
       .then(() => getRoomWithBookings(roomId, date))
-      .then(r => template.render({room: r.body, date, values, unbooked}, res))
+      .then(r => template.render({room: r.body, date, values, unbooked, gaPage}, res))
       .catch(next);
   }
 
@@ -96,9 +97,10 @@ function post(req, res, next) {
         const booking = bookingResponse.body;
         const bookingId = booking.id;
         const room = roomResponse.body;
+        const gaPage = req.originalUrl + '/room-booked';
 
         template.render({
-          room, date, values: {dateDay, dateMonth, dateYear}, bookingId
+          room, date, values: {dateDay, dateMonth, dateYear}, bookingId, gaPage
         }, res);
 
         const roomName = room.name;

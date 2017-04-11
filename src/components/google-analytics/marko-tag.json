@@ -1,0 +1,11 @@
+{
+  "@tracking-id": {
+    "type": "string",
+    "required": true
+  },
+  "@domain": {
+    "type": "string",
+    "required": true
+  },
+  "@page": "string"
+}
