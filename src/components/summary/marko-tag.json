@@ -1,6 +1,6 @@
 {
   "@items <item>[]": {
-    "@key": {
+    "@name": {
       "required": true,
       "type": "string"
     },

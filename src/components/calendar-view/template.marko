@@ -1,37 +1,47 @@
-<script marko-init>
-  const heightOfBooking = require('../../utils/height-of-booking');
-  const positionFromTop = require('../../utils/position-from-top');
-  const formatTime = require('../../utils/format-time');
-  const isToday = require('date-fns/is_today');
-  const {validHours} = require('../../utils/consts');
-</script>
+import isToday from 'date-fns/is_today';
+import formatTime from '../../utils/format-time';
+import {validHours} from '../../utils/consts';
 
-<div class="calendar">
-  <ol class="times" aria-hidden="true">
-    <li class="time" for(hour in validHours)>${hour}:00</li>
+static function numberOfHours(date) {
+  return date.getHours() + (date.getMinutes() / 60);
+}
+
+static function heightOfBooking(startDate, endDate) {
+  return `${((numberOfHours(endDate) - numberOfHours(startDate)) / validHours.length) * 100}%`;
+}
+
+static function positionFromTop(startDate) {
+  return `${((numberOfHours(startDate) - parseInt(validHours[0], 10)) / validHours.length) * 100}%`;
+}
+
+$ const now = new Date();
+$ const beforeEndOfDay = isToday(input.date) && now.getHours() < validHours[validHours.length - 1];
+
+<div.calendar>
+
+  <ol.times aria-hidden="true">
+    <li.time for(hour in validHours)>${hour}:00</li>
   </ol>
 
-  <dl class="bookings" if(data.bookings.length)>
-    <for(booking in data.bookings)>
-      <var startDate=(new Date(booking.start)) endDate=(new Date(booking.end))
-       height=heightOfBooking(startDate, endDate) top=positionFromTop(startDate)/>
+  <dl.bookings if(input.bookings.length)>
+    <for(booking in input.bookings)>
+      $ const startDate = new Date(booking.start);
+      $ const endDate = new Date(booking.end);
 
-      <dt class="visuallyhidden">
-        <i18n-message key="calendar:until" start=booking.start end=booking.end/>
+      <dt.visuallyhidden>
+        <i18n-message key="calendar:until" start=formatTime(startDate) end=formatTime(endDate)/>
       </dt>
-      <dd class="booking" style="height: ${height}%; top: ${top}%">
-        <i18n-message key="calendar:description" description=booking.description
-          name=booking.name/>
+      <dd.booking style={height: heightOfBooking(startDate, endDate), top: positionFromTop(startDate)}>
+        <i18n-message key="calendar:description" description=booking.description name=booking.name/>
       </dd>
     </for>
   </dl>
 
-  <var now=(new Date()) top=positionFromTop(now) itsToday=isToday(data.date)/>
-  <p class="now" style="top: ${top}%" if(itsToday && now.getHours() < validHours[validHours.length - 1])>
-    <span class="now-time">
-      <i18n-message key="calendar:now"
-        hide-start="<span class=\"visuallyhidden\">"
+  <p.now style={top: positionFromTop(now)} if(beforeEndOfDay)>
+    <span.now-time>
+      <i18n-message key="calendar:now" hide-start="<span class=\"visuallyhidden\">"
         hide-end="</span>" time=formatTime(now)/>
     </span>
   </p>
+
 </div>

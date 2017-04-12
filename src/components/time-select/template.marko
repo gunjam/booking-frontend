@@ -1,26 +1,34 @@
-<div class="form-group${(data.error ? ' error' : '')}">
+import {validHours, validMinutes} from '../../utils/consts';
+
+$ {
+  const hours = Array.isArray(input.hours) ? input.hours : validHours;
+  const minutes = Array.isArray(input.minutes) ? input.minutes : validMinutes;
+  const selectClasses = ['form-control', 'time-control', input.error && 'form-control-error'];
+}
+
+<div class=['form-group', input.error && 'form-group-error']>
   <fieldset>
     <legend>
-      <span class="form-label">
-        ${data.legend}
+      <span.form-label>
+        ${input.legend}
       </span>
-      <span if(data.error) id="error-message-${data.name}" class="error-message">
-        ${data.error}
+      <span.error-message if(input.error) id="error-message-${input.name}">
+        ${input.error}
       </span>
     </legend>
-    <label for="hours" class="visually-hidden">
+    <label.visually-hidden for="hours">
       Hours
     </label>
-    <select class="form-control time-control" id="hours" name="${data.name}Hours">
-      <option for(hour in data.hours) value="${hour}" selected=(hour === data.valueHours)>
+    <select class=selectClasses id="hours" name="${input.name}Hours">
+      <option for(hour in hours) value="${hour}" selected=(hour === input.valueHours)>
         ${hour}
       </option>
     </select>
-    <label for="minutes" class="visually-hidden">
+    <label.visually-hidden for="minutes">
       Minutes
     </label>
-    <select class="form-control time-control" id="minutes" name="${data.name}Minutes">
-      <option for(minute in data.minutes) value="${minute}" selected=(minute === data.valueMinutes)>
+    <select class=selectClasses id="minutes" name="${input.name}Minutes">
+      <option for(minute in minutes) value="${minute}" selected=(minute === input.valueMinutes)>
         ${minute}
       </option>
     </select>

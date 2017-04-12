@@ -1,18 +1,16 @@
-<i18n-var/>
+$ const i18n = out.stream.req.t;
 
-<layout-use("../../common/layout.marko")>
+<include('../../common/layout.marko') page-title="${i18n('choose:heading')} - ${i18n('app:serviceName')}">
 
-  <layout-put into="page-title">
-    <i18n-message key="choose:heading"/> - <i18n-message key="app:serviceName"/>
-  </layout-put>
-
-  <layout-put into="content">
-    <h1 class="heading-xlarge">
+  <@content>
+    <h1.heading-xlarge>
       <i18n-message key="choose:heading"/>
     </h1>
 
     <for(location in data.locations)>
-      <h2 class="heading-medium"><i18n-message key="choose:floorplate" name=location.name/></h2>
+      <h2.heading-medium>
+        <i18n-message key="choose:floorplate" name=location.name/>
+      </h2>
 
       <table>
         <thead>
@@ -20,44 +18,37 @@
             <th scope="col">
               <i18n-message key="choose:roomName"/>
             </th>
-
             <th scope="col">
               <i18n-message key="choose:equipment"/>
             </th>
-
-            <th class="numeric" scope="col">
+            <th.numeric scope="col">
               <i18n-message key="choose:sittingCapacity"/>
             </th>
-
-            <th class="numeric" scope="col">
+            <th.numeric scope="col">
               <i18n-message key="choose:standingCapacity"/>
             </th>
           </tr>
         </thead>
-
         <tbody>
           <tr for(room in location.rooms)>
             <td>
               <a href="/book/${room.id}">${room.name}</a>
             </td>
-
             <td>
               <for (feature in room.features | separator=', ')>
                 ${feature.description}
               </for>
             </td>
-
-            <td class="numeric">
+            <td.numeric>
               ${room.sittingCapacity}
             </td>
-
-            <td class="numeric">
+            <td.numeric>
               ${room.standingCapacity}
             </td>
           </tr>
         </tbody>
       </table>
     </for>
-  </layout-put>
+  </@content>
 
-</layout-use>
+</include>

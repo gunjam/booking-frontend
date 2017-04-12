@@ -1,21 +1,17 @@
-<layout-use("../../common/layout.marko")>
+$ const i18n = out.stream.req.t;
 
-  <layout-put into="page-title">
-    <i18n-message key="cancelled:heading"/> - <i18n-message key="app:serviceName"/>
-  </layout-put>
+<include('../../common/layout.marko') page-title="${i18n('cancelled:heading')} - ${i18n('app:serviceName')}">
 
-  <layout-put into="content">
-
-    <a href="/choose-a-room" class="link-back">
+  <@content>
+    <a.link-back href="/choose-a-room">
       <i18n-message key="choose:heading"/>
     </a>
 
-    <div class="govuk-box-highlight text">
-      <h1 class="bold-large">
+    <div.govuk-box-highlight.text>
+      <h1.bold-large>
         <i18n-message key="cancelled:heading"/>
       </h1>
     </div>
+  </@content>
 
-  </layout-put>
-
-</layout-use>
+</include>

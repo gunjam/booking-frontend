@@ -1,20 +1,14 @@
-<i18n-var/>
-<layout-use("../../common/layout.marko")>
+$ const i18n = out.stream.req.t;
 
-  <layout-put into="page-title">
-    <i18n-message key="error:${data.status}.heading"/>
-  </layout-put>
+<include('../../common/layout.marko') page-title="${i18n('error:${data.status}.heading')}">
 
-  <layout-put into="content">
-
-    <h1 class="heading-xlarge">
+  <@content>
+    <h1.heading-xlarge>
       <i18n-message key="error:${data.status}.heading"/>
     </h1>
-
-    <p class="text lede">
+    <p.text lede>
       <i18n-message key="error:${data.status}.body"/>
     </p>
+  </@content>
 
-  </layout-put>
-
-</layout-use>
+</include>
