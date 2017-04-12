@@ -13,7 +13,7 @@ $ {
   const pageTitle = i18n('book:title', {'floor-plate': data.room.location.name, 'room-name': data.room.name}) + '-' + i18n('app:serviceName');
 }
 
-<include("../../common/layout.marko") page-title=pageTitle>
+<include("../../common/layout.marko") page-title=pageTitle ga-page=data.gaPage>
 
   <@content>
     <a.link-back href="/choose-a-room">
