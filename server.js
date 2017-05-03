@@ -40,7 +40,7 @@ app.use(require('lasso/middleware').serveStatic({
 }));
 
 // Ip Filter
-if (process.env.NODE_ENV === 'production') {
+if (process.env.IP_WHITE_LIST) {
   const ipWhiteList = JSON.parse(process.env.IP_WHITE_LIST);
 
   app.use((req, res, next) => {
