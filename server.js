@@ -3,7 +3,7 @@
 require('marko/node-require').install();
 
 const bodyParser = require('body-parser');
-const compression = require('compression');
+const shrinkRay = require('shrink-ray');
 const express = require('express');
 const helmet = require('helmet');
 const i18next = require('i18next');
@@ -23,7 +23,7 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 // Enable compression
-app.use(compression());
+app.use(shrinkRay());
 
 // Disable x-powered-by header
 app.disable('x-powered-by');
