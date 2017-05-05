@@ -11,26 +11,26 @@
   "dependencies": {
     "body-parser": "^1.17.1",
     "compression": "^1.6.2",
-    "date-fns": "^1.28.2",
+    "date-fns": "^1.28.4",
     "express": "^4.15.2",
     "got": "^6.7.1",
     "govuk-elements-marko": "^4.0.0",
     "govuk-elements-sass": "^3.0.2",
     "govuk-template-marko": "^1.1.0",
-    "helmet": "^3.5.0",
-    "i18next": "^7.1.3",
-    "i18next-express-middleware": "^1.0.3",
-    "i18next-node-fs-backend": "^0.1.3",
+    "helmet": "^3.6.0",
+    "i18next": "^8.1.0",
+    "i18next-express-middleware": "^1.0.5",
+    "i18next-node-fs-backend": "^1.0.0",
     "jquery": "^1.12.4",
-    "lasso": "~2.11.8",
+    "lasso": "~2.11.10",
     "lasso-sass": "^2.0.0",
-    "marko": "^4.2.7",
+    "marko": "^4.2.8",
     "marko-i18next": "^0.2.0",
-    "nodemailer": "^4.0.0",
+    "nodemailer": "^4.0.1",
     "validator": "^7.0.0"
   },
   "devDependencies": {
-    "xo": "^0.18.1"
+    "xo": "^0.18.2"
   },
   "xo": {
     "space": true,
@@ -40,7 +40,7 @@
       "jquery"
     ],
     "ignores": [
-      "**/*.marko.js"
+      "./**/*.marko.js"
     ],
     "overrides": [
       {
