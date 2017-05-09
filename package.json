@@ -21,7 +21,6 @@
     "i18next": "^8.1.0",
     "i18next-express-middleware": "^1.0.5",
     "i18next-node-fs-backend": "^1.0.0",
-    "jquery": "^1.12.4",
     "lasso": "~2.11.10",
     "lasso-sass": "^2.0.0",
     "marko": "^4.2.8",
