@@ -25,18 +25,20 @@ node server
 ```
 
 ## Environment Variables
-`PORT` - defaults to 5000  
-`IP_WHITE_LIST` - array of IP's as strings. If set, the application will reject connections from any IP not in the array.  
-`EMAIL_ADDRESS` - an email address the application can use to send verification emails.  
+`PORT` - sets port the service will listen on, defaults to 5000.  
+`IP_WHITE_LIST` - array of IP's as strings. If set, the application will reject connections from any IP not in the array. If no white list is set, anyone can access the service.  
+`EMAIL_ADDRESS` - an email address the application can use to send verification emails. Must be a gmail address.  
 `EMAIL_PASSWORD` - password to the EMAIL_ADDRESS so the application can log in to send verification emails.  
-`TZ` - timezone  
+`FEEDBACK_EMAIL` - email address used in the `mailto:` feedback link.  
+`GA_TRACKING_ID` - Google Analytics tracking ID, GA javascript will not be included if this is not set.  
 
 examples:
 
 ```
+PORT=3000
 IP_WHITE_LIST=['127.0.0.1', '192.168.0.1']
 EMAIL_ADDRESS=room.bookings@gmail.com
 EMAIL_PASSWORD=p45sW0rd!
-TZ=Europe/London
+FEEDBACK_EMAIL=booking.feedback@gmail.com
+GA_TRACKING_ID=UA-12345678-90
 ```
-
