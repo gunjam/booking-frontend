@@ -16,7 +16,13 @@ function get(req, res, next) {
   const values = {dateDay: date.getDate(), dateMonth: date.getMonth() + 1, dateYear: date.getFullYear()};
 
   getRoomWithBookings(roomId, date)
-    .then(response => template.render({room: response.body, date, errors, values}, res))
+    .then(response => {
+      console.log(response.body)
+      if (response.body.active) {
+        return template.render({ room: response.body, date, errors, values }, res)
+      }
+      next();
+    })
     .catch(next);
 }
 
