@@ -17,9 +17,8 @@ function get(req, res, next) {
 
   getRoomWithBookings(roomId, date)
     .then(response => {
-      console.log(response.body)
       if (response.body.active) {
-        return template.render({ room: response.body, date, errors, values }, res)
+        return template.render({room: response.body, date, errors, values}, res);
       }
       next();
     })
