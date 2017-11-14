@@ -30,3 +30,7 @@ static
 
 # Lasso cache
 .cache
+
+# Google API
+client_secret.json
+token.json
