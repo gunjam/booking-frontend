@@ -118,9 +118,10 @@ function post(req, res, next) {
         sendMail({
           to: email,
           subject: req.t('email:subject', {roomName, bookingDate, time}),
-          text: req.t('email:body', {name, description, roomName, bookingDate, time, url})
+          message: req.t('email:body', {name, description, roomName, bookingDate, time, url})
         })
-        .catch(err => console.error(err));
+        .then(data => console.info('[GMAIL]', data))
+        .catch(err => console.error('[GMAIL]', err));
       })
       .catch(err => {
         if (err.response && (err.response.body.message || '').indexOf('doubleBooking')) {

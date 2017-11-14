@@ -4,7 +4,9 @@ const got = require('got');
 const addDays = require('date-fns/add_days');
 const formatDate = require('../utils/format-date');
 
-const apiUrl = (process.env.API_URL || 'http://localhost:3000') + '/api';
+const apiUrl = (process.env.API_URL || 'http://localhost:3000').replace(/\/$/, '') + '/api';
+
+console.info('[API] Using API_URL', apiUrl);
 
 function getBooking(id) {
   return got(`${apiUrl}/Bookings/${id}`, {json: true, query: {'filter[include]': 'room'}});

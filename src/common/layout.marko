@@ -3,7 +3,7 @@ static const gaTrackingId = process.env.GA_TRACKING_ID;
 
 $ const i18n = out.stream.req.t;
 
-<include('govuk-template-marko/template.marko')
+<include('govuk-template-marko')
   page-title=(input.pageTitle || i18n('app:serviceName'))
   skip-link-message=i18n('app:skipLink')
   header-class="with-proposition"
