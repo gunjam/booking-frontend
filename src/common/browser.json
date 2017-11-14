@@ -1,5 +1,6 @@
 {
   "dependencies": [
+    "govuk-template-marko/internal",
     "./application.scss",
     "../components/language-switcher",
     "../components/notify-success",
