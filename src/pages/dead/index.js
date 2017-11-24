@@ -3,5 +3,6 @@
 const template = require('./template.marko');
 
 module.exports = (req, res) => {
-  template.render({}, res);
+  const lang = req.language;
+  template.render({lang}, res);
 };
