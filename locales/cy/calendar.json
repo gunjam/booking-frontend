@@ -1,5 +1,0 @@
-{
-  "until": "{{start}} tan {{end}}",
-  "description": "{{description}}: {{name}}",
-  "now": "{{-hide-start}}Mae'r amser ar hyn o bryd{{-hide-end}} {{time}}"
-}

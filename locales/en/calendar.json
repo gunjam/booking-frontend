@@ -1,5 +1,0 @@
-{
-  "until": "{{start}} until {{end}}",
-  "description": "{{description}}: {{name}}",
-  "now": "{{-hide-start}}The time is currently{{-hide-end}} {{time}}"
-}

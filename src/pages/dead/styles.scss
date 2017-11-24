@@ -1,3 +1,7 @@
+$path: '/node_modules/govuk_frontend_toolkit/images/';
+@function image-url() {}
+
+@import 'govuk-elements';
 @import 'colours';
 @import 'css3';
 
@@ -35,14 +39,8 @@
   border-right: 0;
 }
 
-@media(min-width:641px) {
-  .translation-list {
-    float: right;
-    margin-top: -1.1em;
-  }
-
-  .translation a,
-  .translation span {
-    line-height: 1.25;
-  }
+.tomb-stone {
+  margin-top: 2em;
+  max-width: 100%;
+  height: auto;
 }

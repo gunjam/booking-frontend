@@ -68,17 +68,8 @@ app.use(i18nextMiddleware.handle(i18next));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(helmet(require('./config/helmet')));
 
-// Set Content-Type header to text to make compression work for output stream
-app.use((req, res, next) => {
-  res.setHeader('Content-Type', 'text/html; charset=utf-8');
-  next();
-});
-
 // Page routes
 app.use('*', require('./src/pages/dead'));
-
-// Handler errors
-app.use(require('./src/pages/error'));
 
 // Listen!
 app.listen(port, err => {

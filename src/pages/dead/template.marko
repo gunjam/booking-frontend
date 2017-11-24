@@ -1,33 +1,62 @@
-$ const i18n = out.stream.req.t;
-
-style {
-  .tomb-stone {
-    margin-top: 2em;
-    max-width: 100%;
-    height: auto;
-  }
+$ {
+  const {originalUrl, language} = out.stream.req;
+  const urlWithoutLang = originalUrl.indexOf('lng=') > -1 ? originalUrl.slice(0, -7) : originalUrl;
+  const urlWithLangQry = urlWithoutLang.indexOf('?') > -1 ? urlWithoutLang + '&lng=' : '?lng=';
+  const i18n = out.stream.req.t;
 }
 
-<include('../../common/layout.marko') page-title="${i18n('dead:heading')} - ${i18n('app:serviceName')}">
+<!DOCTYPE html>
+<lasso-page package-path="./browser.json"/>
+<html>
+  <head>
+    <title><i18n-message key="dead:heading"/></title>
+    <lasso-head/>
+  </head>
+  <body>
+    <main#content.group role="main">
+      <ul.translation-list>
+        <if(language === 'cy')>
+          <li.translation>
+            <a hreflang="en" href="${urlWithLangQry}en" lang="en">
+              <span.visuallyhidden>Switch to</span> English
+            </a>
+          </li>
+          <li.translation.last>
+            <span.visuallyhidden>Iaith bresennol: </span>
+            <span>cyfieithu Gwael Cymraeg</span>
+          </li>
+        </if>
+        <else>
+          <li.translation>
+            <span.visuallyhidden>Current language: </span>
+            <span>English</span>
+          </li>
+          <li.translation.last>
+            <a hreflang="cy" href="${urlWithLangQry}cy" lang="cy">
+              <span.visuallyhidden>Newid i’r</span> cyfieithu Gwael Cymraeg
+            </a>
+          </li>
+        </else>
+      </ul>
 
-  <@content>
-    <h1.heading-xlarge>
-      <i18n-message key="dead:heading"/>
-    </h1>
+      <h1.heading-xlarge>
+        <i18n-message key="dead:heading"/>
+      </h1>
 
-    <p.text>
-      <i18n-message key="dead:spiel"/>
-    </p>
-    <p.text>
-      <i18n-message key="dead:spiel2"/>
-    </p>
-    <p.text>
-      <i18n-message key="dead:moreInfo"
-        link-start="<a href='https://intranet.dwp.gov.uk/section/working-dwp/unified-communications/room-booking'>"
-        link-end="</a>"/>
-      <lasso-img if(data.lang ==='cy') src="./dead_cy.png" alt=i18n('dead:alt') class="tomb-stone"/>
-      <lasso-img else src="./dead.png" alt=i18n('dead:alt') class="tomb-stone"/>
-    </p>
-  </@content>
-
-</include>
+      <p.text>
+        <i18n-message key="dead:spiel"/>
+      </p>
+      <p.text>
+        <i18n-message key="dead:spiel2"/>
+      </p>
+      <p.text>
+        <i18n-message key="dead:moreInfo"
+          link-start="<a href='https://intranet.dwp.gov.uk/section/working-dwp/unified-communications/room-booking'>"
+          link-end="</a>"/>
+        <lasso-img if(language === 'cy') src="./dead_cy.png" alt=i18n('dead:alt') class="tomb-stone"/>
+        <lasso-img else src="./dead.png" alt=i18n('dead:alt') class="tomb-stone"/>
+      </p>
+    </main>
+    <lasso-body/>
+  </body>
+</html>

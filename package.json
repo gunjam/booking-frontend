@@ -15,7 +15,7 @@
     "got": "^6.7.1",
     "govuk-elements-marko": "^4.0.0",
     "govuk-elements-sass": "^3.0.2",
-    "govuk-template-marko": "^1.1.0",
+    "govuk-template-marko": "^2.0.3",
     "helmet": "^3.6.0",
     "i18next": "^8.1.0",
     "i18next-express-middleware": "^1.0.5",

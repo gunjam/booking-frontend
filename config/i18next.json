@@ -15,16 +15,7 @@
     "loadPath": "./locales/{{lng}}/{{ns}}.json"
   },
   "ns": [
-    "app",
-    "choose",
-    "book",
-    "dead",
-    "date",
-    "email",
-    "calendar",
-    "cancel",
-    "cancelled",
-    "error"
+    "dead"
   ],
   "joinArrays": "\n",
   "whitelist": [
