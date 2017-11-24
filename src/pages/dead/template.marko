@@ -1,0 +1,32 @@
+$ const i18n = out.stream.req.t;
+
+style {
+  .tomb-stone {
+    margin-top: 2em;
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+<include('../../common/layout.marko') page-title="${i18n('dead:heading')} - ${i18n('app:serviceName')}">
+
+  <@content>
+    <h1.heading-xlarge>
+      <i18n-message key="dead:heading"/>
+    </h1>
+
+    <p.text>
+      <i18n-message key="dead:spiel"/>
+    </p>
+    <p.text>
+      <i18n-message key="dead:spiel2"/>
+    </p>
+    <p.text>
+      <i18n-message key="dead:moreInfo"
+        link-start="<a href='https://intranet.dwp.gov.uk/section/working-dwp/unified-communications/room-booking'>"
+        link-end="</a>"/>
+      <lasso-img src="./dead.png" alt=i18n('dead:alt') class="tomb-stone"/>
+    </p>
+  </@content>
+
+</include>
